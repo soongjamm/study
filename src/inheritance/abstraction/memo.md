@@ -7,7 +7,7 @@
    
    <br>
     
-### 추상 메소드와 오버라이딩 (Animal 예)
+### 추상 메소드와 오버라이딩 (Animal 예)  
 실체 클래스에서 **동일한 결과**를 갖는다면, 추상 클래스에서 미리 구현을 해도 된다.  
 ```
 public void turnOn() {
@@ -21,3 +21,6 @@ public void turnOn() {
 ```
 public abstract void sound();
 ```
+
+### 기타
+* 추상 메소드는 자식 클래스에서 반드시 구현되어야 한다.

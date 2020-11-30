@@ -1,5 +1,9 @@
 package main;
 
+import Interface.ActionExample;
+import Interface.CarExample;
+import Interface.MultiInheritanceExample;
+import Interface.RemoteControlExample;
 import inheritance.ChildExample;
 import inheritance.abstraction.AnimalExample;
 import inheritance.abstraction.PhoneExample;
@@ -10,6 +14,10 @@ public class Main {
 	// write your code here
 //        PhoneExample.start();
 //        AnimalExample.start();
-        ChildExample.start();
+//        ChildExample.start();
+//        RemoteControlExample.start();
+//        CarExample.start();
+//        MultiInheritanceExample.start();
+        ActionExample.start();
     }
 }
