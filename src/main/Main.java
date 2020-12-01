@@ -7,6 +7,8 @@ import Interface.RemoteControlExample;
 import inheritance.ChildExample;
 import inheritance.abstraction.AnimalExample;
 import inheritance.abstraction.PhoneExample;
+import nestedClassAndInterface.ButtonExample;
+import nestedClassAndInterface.NestedExam1;
 
 public class Main {
 
@@ -18,6 +20,8 @@ public class Main {
 //        RemoteControlExample.start();
 //        CarExample.start();
 //        MultiInheritanceExample.start();
-        ActionExample.start();
+//        ActionExample.start();
+//        NestedExam1.start();
+        ButtonExample.start();
     }
 }
