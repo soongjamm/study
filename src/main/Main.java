@@ -4,6 +4,8 @@ import Interface.ActionExample;
 import Interface.CarExample;
 import Interface.MultiInheritanceExample;
 import Interface.RemoteControlExample;
+import generic.BoundedTypeParameterExample;
+import generic.CompareMethodExample;
 import inheritance.ChildExample;
 import inheritance.abstraction.AnimalExample;
 import inheritance.abstraction.PhoneExample;
@@ -23,6 +25,8 @@ public class Main {
 //        NestedExam1.start();
 //        ButtonExample.start();
 //        AnonymousExample.start();
-        AnonymousExample2.start();
+//        AnonymousExample2.start();
+//        CompareMethodExample.run();
+        BoundedTypeParameterExample.run();
     }
 }
