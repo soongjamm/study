@@ -9,6 +9,7 @@ import generic.CompareMethodExample;
 import inheritance.ChildExample;
 import inheritance.abstraction.AnimalExample;
 import inheritance.abstraction.PhoneExample;
+import javaAPI.RegExp.PatternExample;
 import nestedClassAndInterface.*;
 
 public class Main {
@@ -27,6 +28,7 @@ public class Main {
 //        AnonymousExample.start();
 //        AnonymousExample2.start();
 //        CompareMethodExample.run();
-        BoundedTypeParameterExample.run();
+//        BoundedTypeParameterExample.run();
+        PatternExample.run();
     }
 }
