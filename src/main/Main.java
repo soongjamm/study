@@ -1,11 +1,7 @@
 package main;
 
-import collection.basic.HashMapExample;
-import collection.basic.HashSetExample2;
-import collection.basic.HashtableExample;
-import collection.basic.PropertiesExample;
-
-import java.io.IOException;
+import generic.GenericPractice;
+import sun.net.www.content.text.Generic;
 
 public class Main {
 
@@ -30,6 +26,7 @@ public class Main {
 //        HashSetExample2.run();
 //        HashMapExample.run();
 //        HashtableExample.run();
-        PropertiesExample.run();
+//        PropertiesExample.run();
+        GenericPractice.run();
     }
 }

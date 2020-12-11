@@ -34,7 +34,10 @@ public class Box<T> {
 }
 ```
 
-객체를 생성하고 나면 `private String t` 와 같이 자동으로 재구성 된다.
+객체를 생성하고 나면 `private String t` 와 같이 자동으로 재구성 된다.  
+> Box 클래스를 이용하는 코드에서 더이상 강제타입변환을 사용하지 않는다.
+> `Box<String> box = new Box<>()`과 같이 호출하며, String이 아니라 Integer를 사용하는 Box를 사용하고 싶다면 다음과 같이 다시 생성해야 시한다.  
+> `Box<Integer> box2 = new Bo<>()`
 
 ### 멀티 타입 파라미터
 - 위에 언급한 일반 제네릭 타입과 같은데 타입이 여러개 들어간 것 뿐이다.
@@ -59,7 +62,8 @@ product.setModel("스마트tv")
 
 
 ### 제네릭 메소드 - (CompareMethodExample.java)
-제네릭 메소드도 같은 개념이다. 매개 타입과 리턴 타입으로 타입 파라미터를 갖는다.
+제네릭 메소드도 같은 개념이다. **매개 타입**과 **리턴 타입**으로 타입 파라미터를 갖는다.  
+리턴 타입 앞에 <> 기호를 추가하고 타입 파라미터를 기술한다.
 ```java
 public class Util{
     public static <T> Box<T> boxing(T t) {

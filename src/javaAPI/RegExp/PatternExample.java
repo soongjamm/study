@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 public class PatternExample {
     public static void run() {
 
-        Pattern p = Pattern.compile("a*b");
-        Matcher m = p.matcher("aaaaab");
+        Pattern p = Pattern.compile("[1-4|Q]");
+        Matcher m = p.matcher("4");
         boolean b = m.matches();
         System.out.println(b);
 
