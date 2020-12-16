@@ -1,7 +1,6 @@
 package main;
 
-import generic.GenericPractice;
-import sun.net.www.content.text.Generic;
+import enums.enumExample.EnumExample1;
 
 public class Main {
 
@@ -27,6 +26,7 @@ public class Main {
 //        HashMapExample.run();
 //        HashtableExample.run();
 //        PropertiesExample.run();
-        GenericPractice.run();
+//        GenericPractice.run();
+        EnumExample1.run();
     }
 }

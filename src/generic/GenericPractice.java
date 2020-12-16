@@ -13,6 +13,6 @@ public class GenericPractice {
 ////        String str2 = list.get(0);
 //        String str = (String) list.get(0);
 
-        EnumParent.test(Arrays.asList(EnumChild.values()),"1");
+//        EnumParent.test(Arrays.asList(EnumChild.values()),"1");
     }
 }

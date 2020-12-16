@@ -10,7 +10,6 @@
 - [제네릭](https://github.com/soongjamm/this-is-the-java/blob/master/src/generic)
 - [기본 API 클래스](https://github.com/soongjamm/this-is-the-java/blob/master/src/javaAPI)
     - [정규 표현식 & Pattern 클래스](https://github.com/soongjamm/this-is-the-java/blob/master/src/javaAPI/RegExp)
-- [컬렉션 프레임워](https://github.com/soongjamm/this-is-the-java/blob/master/src/collection)
-
-
--- 테스트3
+- [컬렉션 프레임워크](https://github.com/soongjamm/this-is-the-java/blob/master/src/collection)
+- [enum](https://github.com/soongjamm/this-is-the-java/blob/master/src/enums)
+    - [enum 리스트 가져오기](https://github.com/soongjamm/this-is-the-java/blob/master/src/enums/enumExample)
