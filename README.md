@@ -13,8 +13,8 @@
     - [컬렉션 프레임워크](https://github.com/soongjamm/this-is-the-java/blob/master/src/collection)
     
 ## 스프링 입문을 위한 객체지향의 원리와 이해
-   - [ch01 - 사람을 사랑한 기술](/Users/soongjamm/this-is-java/src/oop/principlesAndUnderstanding/ch01) - 알아둬야 할 스프링 이전의 기술
-   - [ch02 - 자바와 절차적/구조적 프로그래밍]()
+   - [ch01 - 사람을 사랑한 기술](https://github.com/soongjamm/java-study/tree/master/src/oop/principlesAndUnderstanding/ch01) - 알아둬야 할 스프링 이전의 기술
+   - [ch02 - 자바와 절차적/구조적 프로그래밍](https://github.com/soongjamm/java-study/tree/master/src/oop/principlesAndUnderstanding/ch02) - 자바 메모리 구조, 멀티 스레드/멀티 프로세스의 차이
        
 ## etc
 - [enum](https://github.com/soongjamm/this-is-the-java/blob/master/src/enums)

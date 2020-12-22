@@ -1,7 +1,6 @@
 package main;
 
-import enums.enumExample.EnumExample1;
-import oop.Start6;
+import oop.principlesAndUnderstanding.ch02.Start6;
 
 public class Main {
 

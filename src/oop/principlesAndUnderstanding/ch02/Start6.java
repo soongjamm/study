@@ -1,4 +1,4 @@
-package oop;
+package oop.principlesAndUnderstanding.ch02;
 
 // 스레드 안정성이 깨지는 경우
 public class Start6 extends Thread {
