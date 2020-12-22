@@ -1,6 +1,7 @@
 package main;
 
 import enums.enumExample.EnumExample1;
+import oop.Start6;
 
 public class Main {
 
@@ -27,6 +28,7 @@ public class Main {
 //        HashtableExample.run();
 //        PropertiesExample.run();
 //        GenericPractice.run();
-        EnumExample1.run();
+//        EnumExample1.run();
+        Start6.runStart6();
     }
 }
