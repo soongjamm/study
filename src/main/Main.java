@@ -1,7 +1,6 @@
 package main;
 
-import etc.first_class_collection.readme.PayTest;
-import oop.principlesAndUnderstanding.ch02.Start6;
+import etc.first_class_collection.PayTest;
 
 public class Main {
 
