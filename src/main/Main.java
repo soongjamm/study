@@ -1,5 +1,6 @@
 package main;
 
+import etc.first_class_collection.readme.PayTest;
 import oop.principlesAndUnderstanding.ch02.Start6;
 
 public class Main {
@@ -28,6 +29,7 @@ public class Main {
 //        PropertiesExample.run();
 //        GenericPractice.run();
 //        EnumExample1.run();
-        Start6.runStart6();
+//        Start6.runStart6();
+        PayTest.run();
     }
 }
