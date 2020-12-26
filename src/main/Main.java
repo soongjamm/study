@@ -1,7 +1,5 @@
 package main;
 
-import etc.first_class_collection.PayTest;
-
 public class Main {
 
     public static void main(String[] args) throws Exception {
@@ -29,6 +27,6 @@ public class Main {
 //        GenericPractice.run();
 //        EnumExample1.run();
 //        Start6.runStart6();
-        PayTest.run();
+//        PayTest.run();
     }
 }
