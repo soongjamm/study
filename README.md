@@ -15,6 +15,9 @@
 ## 스프링 입문을 위한 객체지향의 원리와 이해
    - [ch01 - 사람을 사랑한 기술](https://github.com/soongjamm/java-study/tree/master/src/oop/principlesAndUnderstanding/ch01) - 알아둬야 할 스프링 이전의 기술
    - [ch02 - 자바와 절차적/구조적 프로그래밍](https://github.com/soongjamm/java-study/tree/master/src/oop/principlesAndUnderstanding/ch02) - 자바 메모리 구조, 멀티 스레드/멀티 프로세스의 차이
+   - ch03 - 자바와 객체 지향
+       - [자바와 객체지향 - 개요 (객체지향의 4대 특성)](https://soongjamm.tistory.com/98)
+       - [자바와 객체지향 - 추상화:모델링](https://soongjamm.tistory.com/101)
 
 ## live-study (백기선님)
 - [1주차-JVM은 무엇이며 자바 코드는 어떻게 실행하는 것인가.](https://soongjamm.tistory.com/95)
