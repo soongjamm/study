@@ -70,3 +70,64 @@ JUnit5에서는 테스트가 `public`일 필요 없다.
 > Tip.  
 > 테스트 메소드 이름에 마우스를 가져다대고 `ctl`+`shift`+`r`을 누르면 해당 테스트만 진행되고,  
 > 공백 부분에 마우스를 가져다대고 똑같은 키를 누르면 전체 테스트가 진행된다.
+>
+>
+---
+
+## Assertion
+실제테스트에서 검증하고자 하는 내용을 확인하는 기능이다.  
+> `assert`를 다 다루기엔 너무 많고 몇가지만 간추려서 학습한다.  
+
+> 실제 로직 작성전에 테스트 먼저 작성하자.  
+
+`assertEquals(expected, actual)`
+- 인자로 `(기대값, 실제값[, 실패시 메세지])`로 주고 두 값이 같은지 확인한다.   
+- 실패시 메세지는 필수는 아니다. 다만 나중에 봤을 때 메세지를 적어놨면 디버깅이 더 쉬울것이다. 
+- 메세지는 스트링으로 줄수도 있고 `supplier (or supplier를 람다식)`으로 작성할 수도 있다.
+    - `Supplier`도 테스트가 실패했을때 출력해줄 메세지를 적어주면 된다. 
+    - 스트링으로 작성핳는 것 보다 복잡하지만 사용하는 이유는 에러 메세지를 만들 때, (연산이 들어가는 등 복잡한 메세지를 생성할 때), 실패한 경우에만 해당 메세지를 만들게 할 수있다. 그냥 스트링을 넣으면 성공이던 실패던 항상 만든다.
+    - 즉 문자열 연산 비용이 걱정되는 경우에 성능에 유리하다.
+    - `Supplier`에 대해서는 자바8을 공부한다.
+<br>
+
+`assertTrue(boolean)`
+- 다음 조건이 참인지 확인한다.
+
+`assertAll(executables...)`
+- 원래 앞에 있는 테스트가 깨지면 그 다음 테스트는 실행되지가 않는데, 
+- 깨지지 않고 연관된 테스트를 모두 묶어주는 방법이다.
+- 람다식으로 묶는다.
+```
+assertAll(
+        () -> assertNotNull(study),
+        () -> assertEquals(StudyStatus.DRAFT, study.getStatus(), "스터디를 처음 만들면 상태값이 DRAFT여야 한다."),
+        () -> assertTrue(study.getLimit() > 0, "스터디 최대 참석 가능 인원은 0보다 커야한다.")
+);
+```
+
+`assertThrows(expectedType, executable)`
+- 로직에서 예외를 던지는지 확인할 수 있다. 
+- 예외를 받아서 `assertTrue()`로 내가 기대한 메세지와 같은지 확인하는 테스트코드를 짤 수도 있다.
+```
+IllegalArgumentException exception =
+        assertThrows(IllegalArgumentException.class, () -> new Study(-10));
+assertEquals("limit은 0보다 커야 한다.", exception.getMessage());
+```
+
+`assertTimeout(duration, executable)`
+- 실행이 얼마만에 끝나야 한다는 시간제한을 걸어서 시간을 초과하면 에러가 난다.
+- 단점 : 반드시 코드블럭 실행이 끝날때 까지 기다린다. 
+    - 이 테스트에서 오래걸리는 코드가 있다면 그만큼 테스트도 시간이 걸린다.  
+    - (시간제한을 몇초로 걸든 10초 걸리는 코드있으면 10초 기다려야함)  
+
+`assertTimeoutPreemptively()`
+- `assertTimeout()`을 단점을 개선해, 사용하면 제한건 시간 지났을 때 그냥 종료함. 
+- 주의 : 코드블록은 별도의 스레드에서 실행하기 때문에 `ThreadLocal` 이라는걸 사용해야하는 경우 예상치 못한 문제 발생한다. (나중에 스프링 시큐리티등에서 사용)
+    - 스레드와 상관없는 코드일때만 사용하는게 안전하다.   
+    
+> AssertJ​, ​Hemcrest​, ​Truth​ 등의 라이브러리도 있다. 
+> 예전에 JUnit과 AssertJ를 혼동한 적이 있는데 다른 것임을 기억하자.  
+> AssertJ는 `asserThat(actual.getLimit()).isGreaterThan()...` 처럼 영어 작문하듯 작성한다.
+
+
+]
