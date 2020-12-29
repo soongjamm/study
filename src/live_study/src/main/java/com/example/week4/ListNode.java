@@ -51,7 +51,7 @@ public class ListNode {
 
     static private void validatePositionInput(int position) {
         if (position < 0) {
-            throw new IllegalArgumentException("포지션은 0이상 이어야 합니다.");
+            throw new NullPointerException("포지션은 0이상 이어야 합니다.");
         }
     }
 
