@@ -24,6 +24,11 @@
 - [1주차-JVM은 무엇이며 자바 코드는 어떻게 실행하는 것인가.](https://soongjamm.tistory.com/95)
 - [2주차-자바 데이터타입, 변수 그리고 배열](https://soongjamm.tistory.com/97)
 - [3주차-연산자](https://soongjamm.tistory.com/100)
+- [4주차-제어문](https://soongjamm.tistory.com/110)
+    - [스터디 참석율 관리 프로그램](https://github.com/soongjamm/live-study-participant-checker)
+
+## 애플리케이션을 테스트하는 다양한 방법
+- [정리](https://github.com/soongjamm/java-study/tree/master/src/whiteship_test_code)
        
 ## etc
 - [enum](https://github.com/soongjamm/this-is-the-java/blob/master/src/etc/enums)
