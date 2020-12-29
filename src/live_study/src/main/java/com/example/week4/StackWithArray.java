@@ -1,10 +1,10 @@
 package com.example.week4;
 
-public class Stack {
+public class StackWithArray {
     int[] datas;
     int pointer = -1; // empty
 
-    public Stack(int size) {
+    public StackWithArray(int size) {
         datas = new int[size];
     }
 
