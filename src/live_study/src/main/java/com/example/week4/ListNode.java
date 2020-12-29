@@ -1,4 +1,4 @@
-package com.example.LinkedList;
+package com.example.week4;
 
 import java.util.Objects;
 

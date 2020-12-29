@@ -1,9 +1,7 @@
-package com.example.LinkedList;
+package com.example.week4;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
