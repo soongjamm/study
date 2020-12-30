@@ -19,6 +19,8 @@
    - ch03 - 자바와 객체 지향
        - [자바와 객체지향 - 개요 (객체지향의 4대 특성)](https://soongjamm.tistory.com/98)
        - [자바와 객체지향 - 추상화:모델링](https://soongjamm.tistory.com/101)
+   - ch05 - 스프링이 사랑한 디자인 패턴
+       - 어댑터 패턴
 
 ## live-study (백기선님)
 - [1주차-JVM은 무엇이며 자바 코드는 어떻게 실행하는 것인가.](https://soongjamm.tistory.com/95)
