@@ -20,7 +20,7 @@
        - [자바와 객체지향 - 개요 (객체지향의 4대 특성)](https://soongjamm.tistory.com/98)
        - [자바와 객체지향 - 추상화:모델링](https://soongjamm.tistory.com/101)
    - ch05 - 스프링이 사랑한 디자인 패턴
-       - 어댑터 패턴
+       - [어댑터 패턴](src/oop/principlesAndUnderstanding/src/main/java/ch06/adapter_pattern/)
 
 ## live-study (백기선님)
 - [1주차-JVM은 무엇이며 자바 코드는 어떻게 실행하는 것인가.](https://soongjamm.tistory.com/95)
@@ -28,7 +28,11 @@
 - [3주차-연산자](https://soongjamm.tistory.com/100)
 - [4주차-제어문](https://soongjamm.tistory.com/110)
     - [스터디 참석율 관리 프로그램](https://github.com/soongjamm/live-study-participant-checker)
-
+    - [링크드리스트](https://soongjamm.tistory.com/107)
+    - [스택](https://soongjamm.tistory.com/108)
+    - [큐](https://soongjamm.tistory.com/109)
+- [5주차-클래스](https://soongjamm.tistory.com/111)
+    - [바이너리트리-코드](https://github.com/soongjamm/java-study/commit/f02dd27c9f7fe3c4b03075e8624da217d20ad0fb)
 ## 애플리케이션을 테스트하는 다양한 방법
 - [정리](https://github.com/soongjamm/java-study/tree/master/src/whiteship_test_code)
        

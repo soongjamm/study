@@ -6,10 +6,8 @@ import java.util.Queue;
 
 public class BinaryTree {
 
-    static Queue<Node> q;
-
     public static String bfs(Node root) {
-        q = new LinkedList<>();
+        Queue<Node> q = new LinkedList<>();
         String result = "";
         LinkedList<Node> visited = new LinkedList<>();
         q.add(root);
