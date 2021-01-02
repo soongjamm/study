@@ -9,6 +9,64 @@ Client client = new Client();
 client.runContext(strategy); // 전략을 주입했다.
 ``` 
 
+
+## 예제
+`Strategy.java`
+전략 인터페이스
+```java
+public interface Strategy {
+    public abstract void runStrategy();
+}
+```
+
+`StrategyGun.java` (다른 Strategy들은 생략)
+전략 클래스
+```java
+public class StrategyGun implements Strategy{
+    @Override
+    public void runStrategy() {
+        System.out.println("탕 타당 탕탕ㅇ탕");
+    }
+}
+```
+
+`Soldier.java`
+전략을 적용/사용할 컨텍스트
+```java
+public class Soldier {
+    void runContext(Strategy strategy) {
+        System.out.println("전투 시작");
+        strategy.runStrategy();
+        System.out.println("전투 종료");
+    }
+}
+
+```
+
+`Client.java`
+전략 객체를 생성하고 주입하는 클라이언트
+```java
+public class Client {
+    public static void main(String[] args) {
+        Soldier rambo = new Soldier();
+
+        // 총을 람보에게 전달해서 전투를 수행하게 한다.
+        rambo.runContext(new StrategyGun());
+        System.out.println();
+
+        // 칼을 람보에게 전달해서 전투를 수행하게 한다.
+        rambo.runContext(new StrategySword());
+        System.out.println();
+
+        // 활을 람보에게 전달해서 전투를 수행하게 한다.
+        rambo.runContext(new StrategyBow());
+        System.out.println();
+
+    }
+}
+
+```
+
 > **중요 포인트**
 > - 전략 메서드를 가진 전략 객체
 > - 전략 객체를 사용하는 컨텍스트(전략 객체의 사용자/소비자)
