@@ -22,6 +22,8 @@
    - ch05 - 스프링이 사랑한 디자인 패턴
        - [어댑터 패턴](src/oop/principlesAndUnderstanding/src/main/java/ch06/adapter_pattern/)
        - [프록시 패턴](https://soongjamm.tistory.com/112)
+       - [데코레이터 패턴]()
+       - [싱글턴 패턴]()
 ## live-study (백기선님)
 - [1주차-JVM은 무엇이며 자바 코드는 어떻게 실행하는 것인가.](https://soongjamm.tistory.com/95)
 - [2주차-자바 데이터타입, 변수 그리고 배열](https://soongjamm.tistory.com/97)
