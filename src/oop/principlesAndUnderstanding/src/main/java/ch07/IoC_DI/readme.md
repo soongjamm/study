@@ -108,6 +108,52 @@
     - Driver의 main()에서 Tire생성과 주입부분 (총 2줄)을 삭제한다.
 > property의 name은 해당 bean의 클래스에 있는 set 메소드 이름을 따른다.
 > 만약 `Car.java`에서 tire를 주입하는 setter의 이름이 `setTire()`가 아닌 `setPotato()`로 되어있다면, property의 name도 potato가 되어야 한다.
+
+
+## 스프링을 통한 의존성 주입 - @Autowired
+- 의사코드는 이전과 똑같다. XML에서 약간의 수정이 일어난다.
+- @Autowired는 스프링 설정 파일을 보고 자동으로 속성의 setter 메서드 역할을 해준다.
+- property를 삭제하고, 속성에 `@Autowired`를 적용한다.
+    - 별도의 setter나, xml파일에 property를 작성할 필요가 없다.
+
+- **type 기준 매칭**
+    - 타이어를 변경하고 싶다면 bean의 id 속성만 변경하면 된다.
+    - 그런데 bean에 id가 써있지 않아도 구동될 수 있다.
+    
+    - type을 구현한 bean이 있는가?
+        - 없다면 `No matching bean` 에러
+    - bean이 1개인가?
+        - 아니라면 id가 일치하는 빈이 있는가?
+            - 없다면 `No unique bean 에러`
+    - 유일한 bean을 객체에 할당
+
+#### type 기준 매칭 예제
+```
+// Car.java
+@Autowired
+Tire tire;
+
+// beans.xml
+<bean id="adlskjf" class="~.AmericaTire"></bean>
+```
+- 위 처럼 터무니없는 id의 bean이어도 Tire 타입을 구현한 bean이 하나 존재하는 것이므로 구동된다.
+
+```
+// Car.java
+@Autowired
+Tire tire;
+
+<bean class="~.AmericaTire"></bean>
+<bean id="tire" class="~.Door"></bean>
+```
+- 위는 Tire 타입을 구현한 bean도 있지만, id만 tire고 엉뚱한 클래스의 bean도 존재한다.
+- 이 경우도 어쨌든 type을 기준으로 먼저 매칭하기 때문에, AmericaTire 타입의 bean과 매칭된다.
+     
+
 ---
 bean xml파일을 읽어들이지 못하는 에러가 있었는데, 클래스패스와 관련이 있다고 한다.  
 bean xml파일을 resources폴더에 넣으니 해결됬는데, 클래스패스를 공부해보자.
+ 
+@Autowired field가 자꾸 null이 되는 현상 
+- `<context:annotation-config />`을 빼먹어서 였다.
+- https://deinum.biz/2020-07-03-Autowired-Field-Null/#xml 
