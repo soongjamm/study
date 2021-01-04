@@ -24,6 +24,10 @@
 
 
 ## 스프링 없이 의존성 주입1 - 생성자를 통한 의존성 주입
+`의사코드`
+- 운전자가 타이어를 생산한다.
+- 운전자가 자동차를 생산하면서 타이어를 장착한다.
+
 > 주입이란 `외부에서` 라는 뜻을 내포한다.  
 > 외부에서 타이어를 생산하고 이미 생산된 자동차에 장착하는 작업이 `주입`이다.  
 > 자동차 내부에서 타이어를 생산하지 않는다.
@@ -46,7 +50,64 @@
 > 컨텍스트 - Car의 getTireBrand()
 > 클라이언트 - Driver의 main() 
 
-## 스프링 없이 의존성 주입2 - 속서을 통한 의존성 주입
+## 스프링 없이 의존성 주입2 - 속성을 통한 의존성 주입
+`의사코드`
+- 운전자가 타이어를 생산한다.
+- 운전자가 자동차를 생산한다.
+- 운전자가 자동차에 타이어를 장착한다.
+
 - 속성(setter)로 Tire를 주입하는 형태다.
 - 생성자로 의존성을 주입했을 때 문제점
     - 타이어를 장착하고 나면 바꿀 수 없다.
+    
+## 스프링을 통한 의존성 주입 - XML 파일 사용
+`의사코드`
+- 운전자가 종합 쇼핑몰에서 타이어를 구매한다.
+- 운전자가 종합 쇼핑몰에서 자동차를 구매한다.
+- 운전자가 자동차에 타이어를 장착한다.
+
+`자바로 표현` - 속성 메서드 사용
+- ApplicationContext context = new ClassPathXmlApplicationContext("c4_di_spring.xml", Driver.class)
+- Tire tire = (Tire)context.getBean("tire");
+- Car car = (Car)context.getBean("car");
+- car.setTire(Tire);
+
+- 스프링을 도입시 장점
+    - 자동차의 타이어 브랜드를 변경할 때 재컴파일/재배포 없이 XML 파일만 수정해도 프로그램의 실행 결과를 바꿀 수 있다.
+        - `Driver.java`의 `Tire tire = context.getBean("tire",Tire.class);` 이 부분에 구체적인 타이어를 명시하지 않는다.
+        - xml파일에 `<bean id="tire" class="...KoreaTire">..`에서 클래스부분만 수정하면 된다.
+        - 실제 배포한 환경이라면 엄청난 장점이라고 한다.
+        
+## 스프링을 통한 의존성 주입 - 스프링 설정 파일(XML)에서 속성 주입
+`의사 코드` - 점점 더 현실 세계를 닮아간다.
+- 운전자가 종합 쇼핑몰에 자동차를 구매 요청한다.
+- 종합 쇼핑몰은 자동차를 생산한다.
+- 종합 쇼핑몰은 타이어를 생산한다.
+- 종합 쇼핑몰은 자동차에 타이어를 장착한다.
+- 종합 쇼핑몰은 운전자에게 자동차를 전달한다.
+
+`자바로 표현` 
+- ApplicationContext context = new ClassPathXmlApplicationContext("c5_di_spring_property.xml", Driver.class)
+- Car car = conext.getBean("car", Car.class);
+
+`XML로 표현`
+```xml
+....
+<bean id="koeraTire"...>
+<bean id="americaTire"...>
+<bean id="car" class=".....Car">
+    <property name="tire" ref="koreaTire"></property>
+</bean>
+....
+```
+
+- 자바의 접근자, 설정자 메서드를 속성 메서드라고 한다. 
+    - = Property
+    - 즉 `car.setTire(tire)`를 xml의 property 태그로 대체하는 것이다.
+- 각 Tire클래스와 Car클래스엔 변화가 없다.
+    - Driver의 main()에서 Tire생성과 주입부분 (총 2줄)을 삭제한다.
+> property의 name은 해당 bean의 클래스에 있는 set 메소드 이름을 따른다.
+> 만약 `Car.java`에서 tire를 주입하는 setter의 이름이 `setTire()`가 아닌 `setPotato()`로 되어있다면, property의 name도 potato가 되어야 한다.
+---
+bean xml파일을 읽어들이지 못하는 에러가 있었는데, 클래스패스와 관련이 있다고 한다.  
+bean xml파일을 resources폴더에 넣으니 해결됬는데, 클래스패스를 공부해보자.
