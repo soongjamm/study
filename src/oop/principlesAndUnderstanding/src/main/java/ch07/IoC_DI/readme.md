@@ -149,6 +149,18 @@ Tire tire;
 - 위는 Tire 타입을 구현한 bean도 있지만, id만 tire고 엉뚱한 클래스의 bean도 존재한다.
 - 이 경우도 어쨌든 type을 기준으로 먼저 매칭하기 때문에, AmericaTire 타입의 bean과 매칭된다.
      
+## 스프링을 통한 의존성 주입 - @Resource
+- @Autowired와 거의 같다.
+- @Autowired와 차이점
+    - @Resource는 Id를 우선으로 매칭한다.
+    - @Resource는 자바 표준 어노테이션이고, @Autowired는 스프링 프레임워크의 어노테이션이다.
+        - 스프링 프레임워크를 사용하지 않는다면 @Autowired를 사용할 수 없다.
+- @Resource vs @Autowired vs <Property>
+    - @Resource 를 @Autowired 보다 권장
+        - @Resource가 자바 표준 어노테이션이기도 하고
+        - 계속 봤던 Car, Tire 예제의 Car의 입장에서 `@Resource`의 의미가 더 명확하다.
+    - <Property>를 @Resource 보다 권장
+        - 개발 생산성은 @Resource 지만 유지보수성에서는 <Property>가 유리하다.
 
 ---
 bean xml파일을 읽어들이지 못하는 에러가 있었는데, 클래스패스와 관련이 있다고 한다.  
