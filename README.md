@@ -39,6 +39,8 @@
     - [큐](https://soongjamm.tistory.com/109)
 - [5주차-클래스](https://soongjamm.tistory.com/111)
     - [바이너리트리-코드](https://github.com/soongjamm/java-study/commit/f02dd27c9f7fe3c4b03075e8624da217d20ad0fb)
+- [6주차-상속](https://soongjamm.tistory.com/117)
+
 ## 애플리케이션을 테스트하는 다양한 방법
 - [정리](https://github.com/soongjamm/java-study/tree/master/src/whiteship_test_code)
        

@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
     <context:annotation-config />
-    
+
     <bean id="tire" class="ch07.IoC_DI.c6_di_spring_autowired.KoreaTire"></bean>
     <bean id="americaTire" class="ch07.IoC_DI.c6_di_spring_autowired.AmericaTire"></bean>
     <bean id="car" class="ch07.IoC_DI.c6_di_spring_autowired.Car"></bean>
