@@ -191,5 +191,81 @@ assertTrue(new Money(10, "USD").equals(new Dollar(10, "USD")));
   - 그 외에 중복되는 동치성 테스트 제거
 - 클래스가 Dollar와 Franc로 나누어져 있을땐, 각각 클래스에 대해 더하기를 테스트해야 했지만, 이제 Money에서 하나의 로직으로 동작한다.
   - Franc 더하기 테스트는 삭제해도 된다.
-
   
+
+### 12. 드디어, 더하기
+> 다중 통화 : 여러 나라의 화폐 단위 말함  
+> 참조 통화 : 기준이 되는 화폐. 전 세계에서 무언가 거래할때 달러를 많이 쓰는 것 처럼
+- 각자 다른 통화를 더하기해서 하나의 통화로 나타내야 한다.
+  - 어떻게 해야할지 모르겠다. 우선, `더 작은 단위`로 나눈다.  
+    동일한 화폐끼리 더하는 것을 생각한다.
+- 다중 통화 연산은 어떻게?
+  - 시스템 나머지 코드에 다중 통화 연산을 숨기고 싶다.
+  - 여러 환율을 표현하고 연산처럼 다룰 수 있는 방법 필요
+  - 객체로 해결 (imposter: 타인을 지칭하는 사기꾼)
+  - Money와 비슷하게 동작하지만, 내부적으로는 두 Money의 합을 나타내는 객체.
+    - (2+3)*5 <=> (2달러 + 3프랑) *5
+  - 연산 결과는 Expression
+    - 그 중 하나는 Sum 
+  - 연산이 완료되면 환율을 적용하여 단일 통화로 축약
+  - `위 과정을 거꾸로 테스트로 만들자.`
+    - ### `void simpleAdditionTest()` 작성
+- `reduce(환율 적용해서 단일 통화로 축약)`은 `Bank`가 하도록 한다
+  - 실제 환율이 적용되는 곳은 은행이니까
+  - Expression은 핵심적인 역할.
+    - 핵심적인 역할은 다른 객체가 모르도록 하고싶다.
+    - 그래야 객체가 오랫동안 유연할 수 있다. (재활용, 이해가 쉬움)
+  - Expression 관련 오퍼레이션이 많을 때, 모든 오퍼레이션을 Expression에만 추가하면 Expression이 너무 커질 수 있다.
+    - Bank가 별 필요 없어지면 reduce의 책임을 Expression으로 옮길 수 있다.
+  
+
+
+    
+
+### 13. 진짜로 만들기
+- 중복이 있으니 '같은 통화(usd)로 더하기(5+5)'는 끝난게 아니다.
+  - Bank reduce()의 리턴값 `Money.dollar(10)`과 테스트 `simpleAdditionTest()`에 `assertEquals(Money.dollar(10), reduced);`
+- 이전에는 거꾸로 가짜 -> 진짜 (상수 -> 변수)로 할일이 명확했지만, 이번엔 명확하지 않아서 정방향으로 간다.  
+
+- `Expression sum = five.plus(five);` 두 머니의 합은 `Sum`이어야 한다.
+  - ### `void plusReturnsSumTest()` 작성
+
+- Money.plus()는 Sum이 아닌 Money를 반환함. 
+  - `ClassCastException` 발생
+  - Money.plus()가 Sum을 반환하게 한다.
+  
+- Bank.reduce()는 Sum을 전달받는다.
+  - 만약 Sum이 같은 통화 끼리 더하기, 원하는 통화 역시 두 피연산자와 동일하다면?
+  - reduce()의 리턴은 두 Money의 amount를 합친 Money가 나와야 한다.
+  - ### `void reduceSumTest()` 작성
+  
+  
+- 이 코드는 지저분하다.
+```java
+  public Money reduce(Expression source, String to) {
+      Sum sum = (Sum) source;
+      int amount = sum.addend.amount + sum.augend.amount;
+      return new Money(amount, to);
+  }
+```
+1. 캐스팅. 모든 Expression에 동작하도록 만들어야 함.
+2. 공유(public) 필드와 두 단계에 걸친 참조 (sum.addend.amount)
+
+해결 
+- sum의 publie 필드 사용을 막기 위해, `int amount = ..` 과정을 Sum에 집어넣는다.
+
+
+- Bank.reduce()의 인자로 Money를 넣었을 때 어떻게 테스트할지 작성
+  - 지금까지 테스트 통과되고, 앞으로 할 것이 명확하지 않으니 테스트부터 작성한다.
+  - ### `void reduceMoneyTest()` 작성
+  - 이전의 `void reduceSumTest()`와 뭐가 다른가 생각해보니, 이 전에는 `Sum`을 인자로 넣었었다. `Money`를 테스트하지 않았었다.
+  ```java
+  if (source instanceof Money) {
+    return (Money) source;
+  }
+  ```
+
+  > 클래스를 명시적으로 검사하는 코드가 있을 땐, 다형성을 사용하도록 바꾸는게 좋다.  
+  > Sum도 reduce()를 구현하니 인터페이스에도 올리자.  
+  > => 그러면 캐스팅 검사를 지워도 된다. (알아서 각자 클래스에 reduce()로 찾아가므로)
+
