@@ -9,7 +9,7 @@ public class Money implements Expression {
 
     public Money times(int multiplier) {
         return new Money(amount * multiplier, currency);
-    };
+    }
 
     public static Money dollar(int amount) {
         return new Money(amount, "USD");
@@ -40,7 +40,8 @@ public class Money implements Expression {
     }
 
     @Override
-    public Money reduce(String to) {
-        return this;
+    public Money reduce(Bank bank, String to) {
+        int rate = bank.rate(currency, to);
+        return new Money(amount / rate, to);
     }
 }

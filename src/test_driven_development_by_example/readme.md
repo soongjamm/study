@@ -269,3 +269,31 @@ assertTrue(new Money(10, "USD").equals(new Dollar(10, "USD")));
   > Sum도 reduce()를 구현하니 인터페이스에도 올리자.  
   > => 그러면 캐스팅 검사를 지워도 된다. (알아서 각자 클래스에 reduce()로 찾아가므로)
 
+### 14. 바꾸기
+- 서로 다른 화폐에 환율을 적용한다.
+```java
+@Test
+void reduceMoneyDifferentCurrencyTest() {
+    Bank bank = new Bank();
+    bank.addRadte("CHF", "USD", 2);
+    Money result = bank.reduce(Money.franc(2), "USD");
+    assertEquals(Money.dollar(1), result);
+}
+```
+이렇게 되면 `bank.reduce(Money.franc(2), "USD");`의 첫번째 인자 Money가 다시 Money의 reduce고()를 호출하게 되고, 그 안에서 환율(rate)를 적용한다.  
+```java
+public Money reduce(String to) {
+        int rate = (currency.equals("CHF") && to.equals("USD")) ? 2 : 1;
+        return new Money(amount / rate, to);
+    }
+```
+Money가 스스로 rate까지 알게되는 것은 바람직 하지 않다.  
+그래서 Expression의 reduce()는 인자로 `Bank`까지 받아서, bank가 rate를 알려주도록 해야한다.  
+> Expression의 구현 클래스로는 Money와 Sum이 현재 있고, Bank는 아니다.  
+> `int rate = (currency.equals("CHF") && to.equals("USD")) ? 2 : 1;` 에서 마지막 `1`은 같은 화폐끼리 연산을 했을 때를 위해서였다.  
+
+통화의 쌍을 해시테이블로 쓴다. (Pair) 그리고 Bank가 통화 정보(해시테이블)을 관리한다.
+리팩토링중 코드를 작성할 땐 테스트를 안쓴다. 리팩토링이 끝나고 테스트를 통과하면 그 코드가 잘 사용된 것이다.  
+> hashCode()의 0 리턴은 최악이다. 해시테이블에서 검색이 선형검색처럼 될 것이다.  
+
+
