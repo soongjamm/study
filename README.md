@@ -44,6 +44,12 @@
 - [7주차-패키지](https://soongjamm.tistory.com/118)
 - [8주차-인터페이스](https://soongjamm.tistory.com/119)
 
+## 더 자바8
+- [함수형 인터페이스와 람다식](https://github.com/soongjamm/java-study/tree/master/src/java8/functional_interface_and_lambda)
+
+## TDD: 캔트백
+- [정리](https://github.com/soongjamm/java-study/tree/master/src/test_driven_development_by_example)
+
 ## 애플리케이션을 테스트하는 다양한 방법
 - [정리](https://github.com/soongjamm/java-study/tree/master/src/whiteship_test_code)
        
