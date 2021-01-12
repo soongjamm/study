@@ -28,6 +28,7 @@
        - [팩토리 메소드 패턴]()
        - [전략 패턴](https://soongjamm.tistory.com/115)
        - [템플릿 콜백 패턴](https://soongjamm.tistory.com/116)
+    
 ## live-study (백기선님)
 - [1주차-JVM은 무엇이며 자바 코드는 어떻게 실행하는 것인가.](https://soongjamm.tistory.com/95)
 - [2주차-자바 데이터타입, 변수 그리고 배열](https://soongjamm.tistory.com/97)
@@ -40,11 +41,14 @@
 - [5주차-클래스](https://soongjamm.tistory.com/111)
     - [바이너리트리-코드](https://github.com/soongjamm/java-study/commit/f02dd27c9f7fe3c4b03075e8624da217d20ad0fb)
 - [6주차-상속](https://soongjamm.tistory.com/117)
+- [7주차-패키지](https://soongjamm.tistory.com/118)
+- [8주차-인터페이스](https://soongjamm.tistory.com/119)
 
 ## 애플리케이션을 테스트하는 다양한 방법
 - [정리](https://github.com/soongjamm/java-study/tree/master/src/whiteship_test_code)
        
 ## etc
+- [int와 Integer의 차이](https://soongjamm.tistory.com/120)
 - [enum](https://github.com/soongjamm/this-is-the-java/blob/master/src/etc/enums)
     - [enum 리스트 가져오기](https://github.com/soongjamm/this-is-the-java/blob/master/src/etc/enums/enumExample)
 - [일급 컬렉션](https://github.com/soongjamm/this-is-the-java/blob/master/src/etc/first_class_collection)
