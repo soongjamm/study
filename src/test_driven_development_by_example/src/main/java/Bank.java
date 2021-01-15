@@ -7,7 +7,7 @@ public class Bank {
         return source.reduce(this, to);
     }
 
-    public void addRadte(String from, String to, int rate) {
+    public void addRate(String from, String to, int rate) {
         rates.put(new Pair(from, to), new Integer(rate));
     }
 
