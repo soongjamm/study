@@ -135,3 +135,60 @@ public MemberInfoPrinter infoPrinter() {
 > 스프링으로 웹 앱을 개발하면 수십~수백개의 빈을 생성할 수 있는데, 하나의 설정파일에 몰아넣으면 관리가 힘들기 때문에 영역별로 나누는게 좋다.  
 > 스프링은 한 개 이사의 설정 파일을 이용해 컨테이너를 생성할 수 있다.  
 
+
+### @Autowired, @Configuration, 빈
+- `@Autowired` 어노테이션을 붙이면, 알아서 같은 타입의 빈을 찾아 할당받는다. (= 알아서 주입받는다.)
+- 메소드를 호출하는 것 대신, 할당받은 객체를 사용하면 된다.
+```java
+@Configuration
+public class AppCtx2 {
+  // AppCtx1에 설정된 빈을 @Autowired 필드에 주입한다.
+  @Autowired
+  private MemberDao memberDao;
+  @Autowired
+  private MemberPrinter memberPrinter;
+  
+  @Bean
+  public MemberRegisterService memberRegSvc() {
+      return new MemberRegisterService(memberDao); // 주입받은 빈 객체를 사용한다.
+    }
+}
+```
+<br>
+
+- 스프링 빈에 의존하는 다른 빈을 자동으로 주입하고 싶을 때 사용한다.
+  - 아래 코드에서는 스프링 빈(memberDao)에 의존하는 다른 빈(infoPrinter)을 자동으로 주입
+```java
+public class MemberInfoPrinter {
+
+  @Autowired
+  private MemberDao memDao;
+  @Autowired
+  private MemberPrinter printer;
+    ...
+}
+```
+```java
+@Configuration
+public class AppCtx2 {
+  @Bean
+  public MemberInfoPrinter infoPrinter() {
+    MemberInfoPrinter infoPrinter = new MemberInfoPrinter();
+    // 세터 메서드로 의존 주입을 하지 않아도
+    // 스프링 컨테이너가 @Autowired를 붙인 필드에
+    // 자동으로 해당 타입의 빈 객체를 주입한다.
+    return infoPrinter;
+  }
+}
+```
+
+> 헷갈릴 수 있는게, `AppCtx2`에 있는 필드에도 `@Autowired`가 붙어있다.  
+> 필드에 붙은 @Autowired는 생성자로 DI를 하는 빈을 위한 것이고,  
+> `MemberInfoPrinter`에 붙은 `@Autowired`는 세터로 DI를 하는 빈을 위한 것이다.
+
+- 스프링 컨테이너는 `@Configuration` 설정 클래스도 빈 객체로 등록한다. (이 부분은 다시 이해하자)
+```java
+// @Configuration 설정 클래스도 빈으로 등록함
+        AppCtx1 appCtx1 = ctx.getBean(AppCtx1.class);
+        System.out.println(appCtx1 != null); // true 출력
+```

@@ -34,8 +34,6 @@ public class AppCtx2 {
     @Bean
     public MemberInfoPrinter infoPrinter() {
         MemberInfoPrinter infoPrinter =  new MemberInfoPrinter();
-        infoPrinter.setMemDao(memberDao);
-        infoPrinter.setPrinter(memberPrinter);
         return infoPrinter;
     }
 

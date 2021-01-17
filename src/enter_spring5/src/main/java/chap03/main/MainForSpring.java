@@ -1,6 +1,7 @@
 package chap03.main;
 
 import chap03.config.AppCtx1;
+import chap03.config.AppCtx2;
 import chap03.spring.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -82,7 +83,11 @@ public class MainForSpring {
     }
 
     public static void main(String[] args) throws IOException {
-        ctx = new AnnotationConfigApplicationContext(AppCtx1.class);
+        ctx = new AnnotationConfigApplicationContext(AppCtx1.class, AppCtx2.class);
+
+        // @Configuration 설정 클래스도 빈으로 등록함
+        AppCtx1 appCtx1 = ctx.getBean(AppCtx1.class);
+        System.out.println(appCtx1 != null); // true 출력
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
