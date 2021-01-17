@@ -134,6 +134,8 @@ public MemberInfoPrinter infoPrinter() {
 > **두 개 이상의 설정파일**
 > 스프링으로 웹 앱을 개발하면 수십~수백개의 빈을 생성할 수 있는데, 하나의 설정파일에 몰아넣으면 관리가 힘들기 때문에 영역별로 나누는게 좋다.  
 > 스프링은 한 개 이사의 설정 파일을 이용해 컨테이너를 생성할 수 있다.  
+> `ctx = new AnnotationConfigApplicationContext(AppConf1.class, AppConf2.class);`
+> `AnnotationConfigApplicationContext`은 가변인자를 받으므로 필요한 만큼 인자를 추가하면 된다. 
 
 
 ### @Autowired, @Configuration, 빈
@@ -189,6 +191,40 @@ public class AppCtx2 {
 - 스프링 컨테이너는 `@Configuration` 설정 클래스도 빈 객체로 등록한다. (이 부분은 다시 이해하자)
 ```java
 // @Configuration 설정 클래스도 빈으로 등록함
-        AppCtx1 appCtx1 = ctx.getBean(AppCtx1.class);
-        System.out.println(appCtx1 != null); // true 출력
+AppCtx1 appCtx1 = ctx.getBean(AppCtx1.class);
+System.out.println(appCtx1 != null); // true 출력
 ```
+
+### @Import 애노테이션 사용
+- 두 개 이상의 설정 파일을 사용하는 또 다른 방법이다.   
+(첫번째는 `AnnotationConfigApplicationContext`를 생성할 때 인자를 추가하는 방법 )  
+> 예제에서는 `AppConfImport`에 `AppConf2`를 import했다. 
+- `@Import`에 배열을 통해 두 개 이상의 설정 클래스도 지정할 수 있다.
+- import 된 설정파일에 또 `@Import`를 할 수도 있다.
+
+### getBean() 메소드 사용
+- getBean()으로 빈을 가져올 때, 지금까지 `ctx.getBean(빈 이름, 빈 타입)` 으로 사용했는데,   
+만약 ApplicationContext 객체에 해당 타입의 빈 객체가 하나만 존재한다면 이름 없이 메소드를 호출할 수 있다.   
+  - ex) `ctx.getBean(빈 타입)`
+  - 만약 해당 타입의 빈 객체가 존재하지 않으면 `NoSuchBeanDefinitionException` 발생
+  - 만약 해당 타입의 빈 객체가 두개 이상이라면 `NoUniqueBeanDefinitionException` 발생
+> `ctx.getBean(빈 이름, 빈 타입)` 으로 사용시에
+> - bean 이름을 잘못 지정하면 `NoSuchBeanDefinitionException` 발생
+> - bean 타입을 잘못 지정하면 `BeanNotOfRequiredTypeException` 발생
+
+--- 
+#### 주입 대상 객체를 모두 빈 객체로 설정해야 하나?
+빈 객체로 설정하지 않는다는 것은 일반 객체로 생성해서 주입하는 경우다.
+```java
+public class AppCtxNoMemberPrinterBean {
+  private MemberPrinter printer = new MemberPrinter(); // 빈 아님
+  
+  @Bean
+  public .....{..}
+}
+```
+빈 객체로 설정하는것과 하지 않는 것의 차이는 _스프링 컨테이너가 객체를 관리하는지 여부_ 이다.  빈으로 등록하지 않으면 스프링 컨테이너가 객체를 관리할 수 없다.  
+스프링 컨테이너는 자동 주입, 라이프사이클 관리등의 단순 객체 생성 및 객체 관리를 해주는데, 빈으로 등록된 객체에만 제공되는 기능이다.  
+만약 그 기능들이 필요없다면 빈으로 등록하지 않아도 된다.  
+
+하지만 의존 자동 주입 기능을 프로젝트 전반에 사용하는 추세라 스프링 빈 등록하는게 보통이라고 한다.

@@ -1,7 +1,6 @@
 package chap03.main;
 
-import chap03.config.AppConf1;
-import chap03.config.AppConf2;
+import chap03.config.AppConfImport;
 import chap03.spring.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -10,7 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class MainForSpring {
+public class MainForImport {
 
     private static ApplicationContext ctx = null;
 
@@ -64,7 +63,7 @@ public class MainForSpring {
     }
 
     private static void processListCommand() {
-        MemberListPrinter printer = ctx.getBean("listPrinter", MemberListPrinter.class);
+        MemberListPrinter printer = ctx.getBean(MemberListPrinter.class);
         printer.printAll();
     }
 
@@ -73,21 +72,17 @@ public class MainForSpring {
             printHelp();
             return;
         }
-        MemberInfoPrinter infoPrinter = ctx.getBean("infoPrinter", MemberInfoPrinter.class);
+        MemberInfoPrinter infoPrinter = ctx.getBean(MemberInfoPrinter.class);
         infoPrinter.printMemberInfo(args[1]);
     }
 
     private static void processVersionCommand() {
-        VersionPrinter versionPrinter = ctx.getBean("versionPrinter", VersionPrinter.class);
+        VersionPrinter versionPrinter = ctx.getBean(VersionPrinter.class);
         versionPrinter.print();
     }
 
     public static void main(String[] args) throws IOException {
-        ctx = new AnnotationConfigApplicationContext(AppConf1.class, AppConf2.class);
-
-        // @Configuration 설정 클래스도 빈으로 등록함
-        AppConf1 appConf1 = ctx.getBean(AppConf1.class);
-        System.out.println(appConf1 != null); // true 출력
+        ctx = new AnnotationConfigApplicationContext(AppConfImport.class);
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
