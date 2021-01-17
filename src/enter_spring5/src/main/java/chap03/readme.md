@@ -75,3 +75,53 @@ public class Assembler {
   }
 }
 ```
+
+## 스프링의 DI
+- 위의 `Assembler` 클래스로 조립기를 구현한 것은 스프링 예제는 아니다.
+    - 객체를 생성하고 의존 주입을 이용해 객체를 서로 연결해주는 `조립기`에 대해 알아본 것이다. (스프링을 이해하기 위함)
+    - **_스프링이 DI를 지원하는 조립기이다._**
+### 스프링을 이용한 객체 생성과 사용 방법
+`ApplicationContext`인터페이스를 사용하는데, chapter02의 내용과 같다.
+
+### DI방식 1: 생성자 방식
+> `MemberListPrinter` 참고
+### DI방식 2: 세터(setter) 방식
+> `MemberInfoPrinter` 참고  
+- 자바빈 규칙에 따라 작성한다. [자바빈](bit.ly/22Rj2Ar)
+  - 메서드 이름이 `set` 으로 시작
+  - set 다음 첫 글자는 _대문자로 시작_
+  - 파라미터가 **1개**
+  - 리턴 타입이 `void`
+
+#### 생성자 방식과 세터 방식의 장단점 비교
+상황에 따라 둘을 혼용해서 쓰는 것이 좋다.
+- 생성자 방식의 장단점
+  - 장점  
+    - 빈 객체를 생성하는 시점에 모두 갖추고 시작한다.
+    - 그러므로 `NullPointerException`이 발생하지 않는다.
+  - 단점
+- 파라미터가 많을 때, 각 인자가 어떤 의존 객체를 설정하는지 생성자의 코드를 확인해야 한다.
+```java
+@Bean
+public MemberListPrinter listPrinter() {
+return new MemberListPrinter(memberDao(), memberPrinter()); // 첫번째 인자, 두번째 인자에 어떤 의존 객체가 오는지 단번에 알 수 없다.
+}
+```
+- 세터 방식의 장단점
+  - 장점
+    - 세터 메서드의 이름을 통해 어떤 의존 객체가 주입되는지 알 수 있다.
+    - 파라미터가 많아도 어떤 의존 객체를 설정
+```java
+@Bean
+public MemberInfoPrinter infoPrinter() {
+    MemberInfoPrinter infoPrinter =  new MemberInfoPrinter();
+    infoPrinter.setMemDao(memberDao()); // IDE 자동완성 기능으로 어떤 의존 객체를 설정해야 하는지도 알 수 있다.
+    infoPrinter.setPrinter(memberPrinter());
+    return infoPrinter;
+}
+```
+  - 단점
+    - 깜빡하고 의존 객체를 전달하지 않아도 빈 객체가 생성되기 때문에, 객체를 사용하는 시점에 `NullPointerException이` 발생할 수 있다.
+
+
+    

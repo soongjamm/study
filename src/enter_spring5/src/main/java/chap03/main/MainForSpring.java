@@ -1,22 +1,24 @@
 package chap03.main;
 
-import chap03.assembler.Assembler;
+import chap03.config.AppCtx;
 import chap03.spring.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class MainForAssembler {
+public class MainForSpring {
 
-    private static Assembler assember = new Assembler();
+    private static ApplicationContext ctx = null;
 
     private static void processNewCommand(String[] args) {
         if (args.length != 5) {
             printHelp();
             return;
         }
-        MemberRegisterService regSvc = assember.getMemberRegisterService();
+        MemberRegisterService regSvc = ctx.getBean("memberRegSvc", MemberRegisterService.class);
         RegisterRequest req = new RegisterRequest();
         req.setEmail(args[1]);
         req.setName(args[2]);
@@ -40,13 +42,13 @@ public class MainForAssembler {
             printHelp();
             return;
         }
-        ChangePasswordService changePwdSvc = assember.getChangePasswordService();
+        ChangePasswordService changePwdSvc = ctx.getBean("changePwdSvc", ChangePasswordService.class);
         try {
             changePwdSvc.changePassword(args[1], args[2], args[3]);
             System.out.println("암호를 변경했습니다.\n");
-        } catch(MemberNotFoundException e) {
+        } catch (MemberNotFoundException e) {
             System.out.println("존재하지 않는 이메일입니다.\n");
-        } catch(WrongIdPasswordException e) {
+        } catch (WrongIdPasswordException e) {
             System.out.println("이메일과 암호가 일치하지 않습니다.\n");
         }
     }
@@ -60,7 +62,28 @@ public class MainForAssembler {
         System.out.println();
     }
 
+    private static void processListCommand() {
+        MemberListPrinter printer = ctx.getBean("listPrinter", MemberListPrinter.class);
+        printer.printAll();
+    }
+
+    private static void processInfoCommand(String[] args) {
+        if (args.length != 2) {
+            printHelp();
+            return;
+        }
+        MemberInfoPrinter infoPrinter = ctx.getBean("infoPrinter", MemberInfoPrinter.class);
+        infoPrinter.printMemberInfo(args[1]);
+    }
+
+    private static void processVersionCommand() {
+        VersionPrinter versionPrinter = ctx.getBean("versionPrinter", VersionPrinter.class);
+        versionPrinter.print();
+    }
+
     public static void main(String[] args) throws IOException {
+        ctx = new AnnotationConfigApplicationContext(AppCtx.class);
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
             System.out.println("명령어를 입력하세요.");
@@ -74,6 +97,15 @@ public class MainForAssembler {
                 continue;
             } else if (command.startsWith("change ")) {
                 processChangeCommand(command.split(" "));
+                continue;
+            } else if (command.equals("list")) {
+                processListCommand();
+                continue;
+            } else if (command.startsWith("info ")) {
+                processInfoCommand(command.split(" "));
+                continue;
+            } else if (command.equals("version")) {
+                processVersionCommand();
                 continue;
             }
             printHelp();
