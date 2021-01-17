@@ -1,6 +1,6 @@
 package chap03.main;
 
-import chap03.config.AppCtx;
+import chap03.config.AppCtx1;
 import chap03.spring.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -82,7 +82,7 @@ public class MainForSpring {
     }
 
     public static void main(String[] args) throws IOException {
-        ctx = new AnnotationConfigApplicationContext(AppCtx.class);
+        ctx = new AnnotationConfigApplicationContext(AppCtx1.class);
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
