@@ -25,7 +25,8 @@ public class Application {
         transferService = ctx.getBean(TransferService.class);
         playerPrinter = ctx.getBean(PlayerPrinter.class);
         db = ctx.getBean(DatabaseConnection.class);
-        db2 = ctx.getBean(DatabaseConnection2.class);
+//        db2 = ctx.getBean(DatabaseConnection2.class);
+
 
         registerPlayerService.register(RegisterPlayerRequestDto.builder()
                 .name("김승태")
