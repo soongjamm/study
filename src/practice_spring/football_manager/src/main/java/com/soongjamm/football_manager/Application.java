@@ -1,5 +1,7 @@
 package com.soongjamm.football_manager;
 
+import com.soongjamm.football_manager.DB.DatabaseConnection;
+import com.soongjamm.football_manager.DB.DatabaseConnection2;
 import com.soongjamm.football_manager.config.AppCtx;
 import com.soongjamm.football_manager.components.PlayerPrinter;
 import com.soongjamm.football_manager.components.RegisterPlayerService;
@@ -14,12 +16,16 @@ public class Application {
     RegisterPlayerService registerPlayerService;
     TransferService transferService;
     PlayerPrinter playerPrinter;
+    DatabaseConnection db;
+    DatabaseConnection2 db2;
 
     public void run () {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppCtx.class);
         registerPlayerService = ctx.getBean(RegisterPlayerService.class);
         transferService = ctx.getBean(TransferService.class);
         playerPrinter = ctx.getBean(PlayerPrinter.class);
+        db = ctx.getBean(DatabaseConnection.class);
+        db2 = ctx.getBean(DatabaseConnection2.class);
 
         registerPlayerService.register(RegisterPlayerRequestDto.builder()
                 .name("김승태")
@@ -34,5 +40,6 @@ public class Application {
 
         playerPrinter.print();
 
+        ctx.close();
     }
 }
