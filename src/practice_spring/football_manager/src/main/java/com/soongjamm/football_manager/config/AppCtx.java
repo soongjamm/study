@@ -4,8 +4,12 @@ import com.soongjamm.football_manager.PlayerPrinter;
 import com.soongjamm.football_manager.PlayerRepository;
 import com.soongjamm.football_manager.RegisterPlayerService;
 import com.soongjamm.football_manager.TransferService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 @Configuration
 public class AppCtx {
@@ -18,20 +22,29 @@ public class AppCtx {
     @Bean
     public RegisterPlayerService registerPlayerService() {
         RegisterPlayerService svc = new RegisterPlayerService();
-        svc.setPlayerRepository(playerRepository());
         return svc;
     }
 
     @Bean
     public TransferService transferService() {
-        return new TransferService(playerRepository());
+        return new TransferService();
     }
 
     @Bean
     public PlayerPrinter playerPrinter() {
-        PlayerPrinter printer = new PlayerPrinter();
-        printer.setPlayerRepository(playerRepository());
-        return printer;
+        return new PlayerPrinter();
+    }
+
+    @Bean
+    @Qualifier("localized-long")
+    public DateTimeFormatter dateTimeFormatterLocalizedLong() {
+        return DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG);
+    }
+
+    @Bean
+    @Qualifier("localized-full")
+    public DateTimeFormatter dateTimeFormatterLocalizedFull() {
+        return DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
     }
 
 }

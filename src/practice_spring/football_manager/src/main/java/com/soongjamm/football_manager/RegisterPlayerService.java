@@ -1,14 +1,13 @@
 package com.soongjamm.football_manager;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.Optional;
 
 public class RegisterPlayerService {
-    private PlayerRepository playerRepository;
 
-    // 빈을 세터로 주입받는다.
-    public void setPlayerRepository(PlayerRepository playerRepository) {
-        this.playerRepository = playerRepository;
-    }
+    @Autowired
+    private PlayerRepository playerRepository;
 
     public void register(RegisterPlayerRequestDto dto) {
 
@@ -27,5 +26,7 @@ public class RegisterPlayerService {
                 .birth(dto.getBirth())
                 .build();
         playerRepository.add(newPlayer);
+        System.out.println("선수 등록 완료");
+
     }
 }

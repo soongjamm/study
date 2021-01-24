@@ -1,6 +1,5 @@
 package com.soongjamm.football_manager;
 
-import com.soongjamm.football_manager.assembler.Assembler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,14 +14,6 @@ class TransferServiceTest {
     PlayerRepository playerRepository;
     RegisterPlayerService registerPlayerService;
     TransferService transferService;
-
-    @BeforeEach
-    void initilize() {
-        Assembler assembler = new Assembler();
-        playerRepository = assembler.getPlayerRepository();
-        registerPlayerService = assembler.getRegisterPlayerService();
-        transferService = assembler.getTransferService();
-    }
 
     @Test
     void testTransfer() {

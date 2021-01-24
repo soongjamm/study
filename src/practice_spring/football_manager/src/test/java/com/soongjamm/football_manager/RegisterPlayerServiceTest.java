@@ -1,6 +1,5 @@
 package com.soongjamm.football_manager;
 
-import com.soongjamm.football_manager.assembler.Assembler;
 import com.soongjamm.football_manager.config.AppCtx;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -20,14 +19,6 @@ class RegisterPlayerServiceTest {
     PlayerRepository playerRepository;
     RegisterPlayerService registerPlayerService;
     PlayerPrinter playerPrinter;
-
-    @Disabled
-    @BeforeEach
-    void aseembler() {
-        Assembler assembler = new Assembler();
-        playerRepository = assembler.getPlayerRepository();
-        registerPlayerService = assembler.getRegisterPlayerService();
-    }
 
     @Disabled
     @BeforeEach

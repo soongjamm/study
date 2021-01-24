@@ -1,13 +1,15 @@
 package com.soongjamm.football_manager;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.Optional;
 
 public class TransferService {
+
+    @Autowired
     private PlayerRepository playerRepository;
 
-    // 빈을 생성자로 주입받는다.
-    public TransferService(PlayerRepository playerRepository) {
-        this.playerRepository = playerRepository;
+    public TransferService() {
     }
 
     public void transfer(TransferRequestDto dto) {
@@ -17,5 +19,6 @@ public class TransferService {
 
         targetPlayer.moveTeam(dto.getHeadingTeamName());
 
+        System.out.println("이적 완료");
     }
 }
