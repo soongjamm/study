@@ -17,7 +17,7 @@ public class TransferService {
     }
 
     public void transfer(TransferRequestDto dto) {
-        Optional<Player> player = playerRepository.findByName(dto.getPlayerName());
+        Optional<Player> player = playerRepository.findOneByName(dto.getPlayerName());
 
         Player targetPlayer = player.orElseThrow( () -> new IllegalArgumentException("존재하지 않는 선수입니다."));
 
