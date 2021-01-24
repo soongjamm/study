@@ -1,9 +1,13 @@
-package com.soongjamm.football_manager;
+package com.soongjamm.football_manager.components;
 
+import com.soongjamm.football_manager.Player;
+import com.soongjamm.football_manager.TransferRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+@Component
 public class TransferService {
 
     @Autowired

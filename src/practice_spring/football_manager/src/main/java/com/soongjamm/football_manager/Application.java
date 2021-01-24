@@ -1,6 +1,9 @@
 package com.soongjamm.football_manager;
 
 import com.soongjamm.football_manager.config.AppCtx;
+import com.soongjamm.football_manager.components.PlayerPrinter;
+import com.soongjamm.football_manager.components.RegisterPlayerService;
+import com.soongjamm.football_manager.components.TransferService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.time.LocalDate;

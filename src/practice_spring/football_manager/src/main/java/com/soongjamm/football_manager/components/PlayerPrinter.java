@@ -1,11 +1,14 @@
-package com.soongjamm.football_manager;
+package com.soongjamm.football_manager.components;
 
+import com.soongjamm.football_manager.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+@Component
 public class PlayerPrinter {
 
     @Autowired
