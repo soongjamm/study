@@ -130,4 +130,7 @@ assertEquals("limit은 0보다 커야 한다.", exception.getMessage());
 > AssertJ는 `asserThat(actual.getLimit()).isGreaterThan()...` 처럼 영어 작문하듯 작성한다.
 
 
-]
+---
+조건에 만족할 때만 테스트를 실행하는 메소드
+assumeTrue() : 성공시에만 이 다음 코드를 테스트
+assumingTrue() : 
