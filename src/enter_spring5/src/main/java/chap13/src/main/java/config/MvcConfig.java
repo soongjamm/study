@@ -1,6 +1,7 @@
 package config;
 
 import controller.RegisterRequestValidator;
+import interceptor.AuthCheckInterceptor;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,10 +35,28 @@ public class MvcConfig implements WebMvcConfigurer {
         ms.setDefaultEncoding("UTF-8");
         return ms;
     }
+/**
+ *  Bean Validator를 쓰러면 이 코드를 없애야 한다.
+    @Override
+    public Validator getValidator() {
+        return new RegisterRequestValidator();
+    }
+ */
 
-    // Bean Validator를 쓰러면 이 코드를 없애야 한다.
-//    @Override
-//    public Validator getValidator() {
-//        return new RegisterRequestValidator();
-//    }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        /** Ant 경로 패턴을 갖는다.
+         *  * : 0개 또는 그 이상의 글자
+         *  ? : 1개 글자
+         *  ** : 0개 또는 그 이상의 폴더 경로
+         */
+        registry.addInterceptor(authCheckInterceptor())
+                .addPathPatterns("/edit/**");
+
+    }
+
+    @Bean
+    public AuthCheckInterceptor authCheckInterceptor() {
+        return new AuthCheckInterceptor();
+    }
 }

@@ -11,7 +11,7 @@ import spring.*;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/changePassword")
+@RequestMapping("/edit/changePassword")
 public class ChangePasswordController {
 
     private ChangePasswordService changePasswordService;
