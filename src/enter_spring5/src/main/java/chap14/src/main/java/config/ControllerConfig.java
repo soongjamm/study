@@ -59,4 +59,11 @@ public class ControllerConfig {
         memberListController.setMemberDao(memberDao);
         return memberListController;
     }
+
+    @Bean
+    public MemberDetailController memberDetailController() {
+        MemberDetailController memberDetailController = new MemberDetailController();
+        memberDetailController.setMemberDao(memberDao);
+        return memberDetailController;
+    }
 }

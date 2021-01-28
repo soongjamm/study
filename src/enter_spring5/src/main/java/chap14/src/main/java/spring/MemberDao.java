@@ -13,6 +13,16 @@ import java.util.List;
 public class MemberDao {
 
     private JdbcTemplate jdbcTemplate;
+    private RowMapper<Member> memberRowMapper = (rs, row) -> {
+        Member member = new Member(
+                rs.getString("EMAIL"),
+                rs.getString("PASSWORD"),
+                rs.getString("NAME"),
+                rs.getTimestamp("REGDATE").toLocalDateTime()
+        );
+        member.setId(rs.getLong("ID"));
+        return member;
+    };
 
     public MemberDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -21,17 +31,7 @@ public class MemberDao {
     public Member selectByEmail(String email) {
         List<Member> results = jdbcTemplate.query(
                 "select * from MEMBER where EMAIL =?",
-                (rs, row) -> { // 만약, 자주 사용될 것 가타면 따로 구현크래스를 만들어도 된다. new MEmberRowMapper() * MemberRowMapper
-                    Member member = new Member(
-                            rs.getString("EMAIL"),
-                            rs.getString("PASSWORD"),
-                            rs.getString("NAME"),
-                            rs.getTimestamp("REGDATE").toLocalDateTime()
-                    );
-                    member.setId(rs.getLong("ID"));
-                    return member;
-                },
-                email);
+                memberRowMapper, email);
 
         return results.isEmpty() ? null : results.get(0);
     }
@@ -61,25 +61,14 @@ public class MemberDao {
     public List<Member> selectAll() {
         List<Member> results = jdbcTemplate.query(
                 "select * from MEMBER",
-                (rs, row) -> { // 만약, 자주 사용될 것 가타면 따로 구현크래스를 만들어도 된다. new MEmberRowMapper() * MemberRowMapper
-                    Member member = new Member(
-                            rs.getString("EMAIL"),
-                            rs.getString("PASSWORD"),
-                            rs.getString("NAME"),
-                            rs.getTimestamp("REGDATE").toLocalDateTime()
-                    );
-                    member.setId(rs.getLong("ID"));
-                    return member;
-                }
-        );
+                memberRowMapper);
 
         return results.isEmpty() ? null : results;
     }
 
     public int count() {
         Integer count = jdbcTemplate.queryForObject(
-                "select count(*) from MEMBER", Integer.class
-        );
+                "select count(*) from MEMBER", Integer.class);
 
         return count;
 
@@ -88,18 +77,16 @@ public class MemberDao {
     public List<Member> selectByRegdate(LocalDateTime from, LocalDateTime to) {
         List<Member> results = jdbcTemplate.query(
                 "select * from MEMBER where REGDATE between ? and ? " + "order by REGDATE desc",
-                (rs, row) -> {
-                    Member member = new Member(
-                            rs.getString("EMAIL"),
-                            rs.getString("PASSWORD"),
-                            rs.getString("NAME"),
-                            rs.getTimestamp("REGDATE").toLocalDateTime());
-                    member.setId(rs.getLong("ID"));
-                    return member;
-                },
-                from, to);
+                memberRowMapper, from, to);
 
         return results;
+    }
+
+    public Member selectById(Long id) {
+        List<Member> results = jdbcTemplate.query(
+                "select * from MEMBER where ID = ?", memberRowMapper ,id);
+
+        return results.isEmpty() ? null : results.get(0);
     }
 
 }
