@@ -1,13 +1,33 @@
 package com.example.test_code;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.*;
 
 import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
+import static org.junit.jupiter.api.Assumptions.assumingThat;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class StudyTest {
+
+    @Test
+    @EnabledOnOs(OS.MAC)
+    void 조건에_따라_assumingTrue() {
+        assumingThat(1==2, () -> System.out.println("이건 실행 안함"));
+        assumingThat(2==2, () -> System.out.println("이건 실행 함"));
+    }
+
+    @Test
+    @EnabledOnJre(JRE.JAVA_8)
+    void 조건에_따라_assumeTrue() {
+        assertEquals(1, 1);
+        System.out.println("assumeTrue 테스트 실행"); // 여기까진 실행.
+
+        String test_env = System.getenv("TEST_ENV");
+        assumeTrue("ME".equalsIgnoreCase(test_env));
+    }
 
     @Test
     @DisplayName("스터디 만들기👉🏻❤️")
@@ -31,29 +51,29 @@ class StudyTest {
 
     }
 
-    @Test
-    @Disabled
-    void create_test_again() {
-        System.out.println("create1");
-    }
-
-    @BeforeAll
-    static void beforeAll() {
-        System.out.println("beforeAll");
-    }
-
-    @AfterAll
-    static void afterAll() {
-        System.out.println("afterAll");
-    }
-
-    @BeforeEach
-    void beforeEach() {
-        System.out.println("beforeEach");
-    }
-
-    @AfterEach
-    void afterEach() {
-        System.out.println("afterEach");
-    }
+//    @Test
+//    @Disabled
+//    void create_test_again() {
+//        System.out.println("create1");
+//    }
+//
+//    @BeforeAll
+//    static void beforeAll() {
+//        System.out.println("beforeAll");
+//    }
+//
+//    @AfterAll
+//    static void afterAll() {
+//        System.out.println("afterAll");
+//    }
+//
+//    @BeforeEach
+//    void beforeEach() {
+//        System.out.println("beforeEach");
+//    }
+//
+//    @AfterEach
+//    void afterEach() {
+//        System.out.println("afterEach");
+//    }
 }
