@@ -1,16 +1,10 @@
 package config;
 
-import controller.ChangePasswordController;
-import controller.LoginController;
-import controller.LogoutController;
-import controller.RegisterController;
+import controller.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import spring.AuthService;
-import spring.ChangePasswordCommand;
-import spring.ChangePasswordService;
-import spring.MemberRegisterService;
+import spring.*;
 import survey.SurveyController;
 
 @Configuration
@@ -24,6 +18,9 @@ public class ControllerConfig {
 
     @Autowired
     private AuthService authService;
+
+    @Autowired
+    private MemberDao memberDao;
 
     @Bean
     public RegisterController registerController() {
@@ -56,4 +53,10 @@ public class ControllerConfig {
         return changePasswordController;
     }
 
+    @Bean
+    public MemberListController memberListController() {
+        MemberListController memberListController = new MemberListController();
+        memberListController.setMemberDao(memberDao);
+        return memberListController;
+    }
 }

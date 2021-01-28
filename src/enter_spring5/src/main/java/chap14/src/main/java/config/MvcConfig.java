@@ -35,13 +35,6 @@ public class MvcConfig implements WebMvcConfigurer {
         ms.setDefaultEncoding("UTF-8");
         return ms;
     }
-/**
- *  Bean Validator를 쓰러면 이 코드를 없애야 한다.
-    @Override
-    public Validator getValidator() {
-        return new RegisterRequestValidator();
-    }
- */
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

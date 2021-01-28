@@ -1,11 +1,13 @@
 package spring;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class MemberDao {
@@ -81,16 +83,23 @@ public class MemberDao {
 
         return count;
 
-//        List<Integer> count = jdbcTemplate.query(
-//                "select count(*) from MEMBER",
-//                new RowMapper<Integer>() {
-//                    @Override
-//                    public Integer mapRow(ResultSet rs, int row) throws SQLException {
-//                        return rs.getInt(1);
-//                    }
-//                }
-//        );
-//        return count.get(0);
+    }
+
+    public List<Member> selectByRegdate(LocalDateTime from, LocalDateTime to) {
+        List<Member> results = jdbcTemplate.query(
+                "select * from MEMBER where REGDATE between ? and ? " + "order by REGDATE desc",
+                (rs, row) -> {
+                    Member member = new Member(
+                            rs.getString("EMAIL"),
+                            rs.getString("PASSWORD"),
+                            rs.getString("NAME"),
+                            rs.getTimestamp("REGDATE").toLocalDateTime());
+                    member.setId(rs.getLong("ID"));
+                    return member;
+                },
+                from, to);
+
+        return results;
     }
 
 }
