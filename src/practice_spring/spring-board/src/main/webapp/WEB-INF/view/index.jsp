@@ -11,6 +11,9 @@
     <title>인덱스</title>
 </head>
 <body>
-<h1>인덱스 입니다. ${name}</h1>
+<h1>인덱스 입니다.</h1>
+<p>
+    <a href="/user/register/terms">[회원 가입]</a>
+</p>
 </body>
 </html>

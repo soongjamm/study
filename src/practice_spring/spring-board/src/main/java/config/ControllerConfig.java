@@ -1,22 +1,28 @@
 package config;
 
-import board.BoardController;
+import controllers.user.RegisterController;
+import domain.index.IndexController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.sql.DataSource;
+import service.user.RegisterUserService;
 
 @Configuration
 public class ControllerConfig {
 
     @Autowired
-    DataSource dataSource;
+    RegisterUserService registerUserService;
 
     @Bean
-    public BoardController boardController() {
-        BoardController boardController = new BoardController();
-        boardController.setDataSource(dataSource);
-        return boardController;
+    public IndexController boardController() {
+        return new IndexController();
     }
+
+    @Bean
+    public RegisterController registerController() {
+        RegisterController registerController = new RegisterController();
+        registerController.setUserService(registerUserService);
+        return registerController;
+    }
+
 }
