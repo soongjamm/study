@@ -14,7 +14,7 @@ public class RegisterUserService {
         this.userDao = userDao;
     }
 
-    UserDao userDao;
+    private UserDao userDao;
 
     @Transactional
     public void register(RegisterUserDto dto) {
@@ -28,5 +28,6 @@ public class RegisterUserService {
         user.setEmail(dto.getEmail());
         user.setPassword(dto.getPassword());
         user.setRegdate(LocalDateTime.now());
+        userDao.insert(user);
     }
 }

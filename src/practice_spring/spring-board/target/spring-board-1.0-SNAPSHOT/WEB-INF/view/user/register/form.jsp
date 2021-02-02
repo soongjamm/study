@@ -1,4 +1,3 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: soongjamm
@@ -16,6 +15,7 @@
     <p>
         <label>로그인 이메일</label>
         <input type="email" name="email" id="email">
+        <label>${error}</label>
     </p>
     <p>
         <label>비밀번호</label>

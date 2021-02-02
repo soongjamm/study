@@ -1,11 +1,16 @@
 package controllers.user;
 
+import com.mysql.cj.exceptions.CJCommunicationsException;
 import dto.RegisterUserDto;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import service.user.RegisterUserService;
+
+import java.net.ConnectException;
 
 @Controller
 @RequestMapping("/user/register")
@@ -51,6 +56,12 @@ public class RegisterController {
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder) {
         webDataBinder.setValidator(new RegisterValidator());
+    }
+
+    @ExceptionHandler({DuplicateKeyException.class})
+    public String handleDuplicateKeyException(DuplicateKeyException e, Model model) {
+        model.addAttribute("error", e.getMessage());
+        return "user/register/form";
     }
 
 }
