@@ -50,4 +50,8 @@ public class User {
     public String getName() {
         return name;
     }
+
+    public boolean equalPassword(String password) {
+        return this.password.equals(password);
+    }
 }
