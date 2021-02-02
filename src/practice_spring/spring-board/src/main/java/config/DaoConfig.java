@@ -15,6 +15,8 @@ public class DaoConfig {
 
     @Bean
     public UserDao userDao() {
-        return new UserDao(dataSource);
+        UserDao userDao = new UserDao();
+        userDao.setJdbcTemplate(dataSource);
+        return userDao;
     }
 }
