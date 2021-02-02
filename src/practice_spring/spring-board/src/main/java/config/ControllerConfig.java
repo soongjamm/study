@@ -1,6 +1,7 @@
 package config;
 
 import controllers.user.LoginController;
+import controllers.user.LogoutController;
 import controllers.user.RegisterController;
 import domain.index.IndexController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,11 @@ public class ControllerConfig {
         LoginController loginController = new LoginController();
         loginController.setLoginService(authService);
         return loginController;
+    }
+
+    @Bean
+    public LogoutController logoutController() {
+        return new LogoutController();
     }
 
 }

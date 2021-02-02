@@ -17,6 +17,8 @@
     <h3>현재 로그인 중</h3>
     이름 : ${authInfo.name}</br>
     아이디 : ${authInfo.email}
+    <a href="/logout">[로그아웃]</a>
+
 </c:if>
 <c:if test="${empty authInfo}">
 <p>
