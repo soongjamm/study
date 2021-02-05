@@ -12,3 +12,12 @@ create table spring5board.MEMBER (
     REGDATE datetime,
     unique key (EMAIL)
 )engine=INNODB character set=utf8;
+
+create table spring5board.POSTS (
+    ID int auto_increment primary key,
+    TITLE varchar(255),
+    CONTENT varchar(255),
+    AUTHOR_EMAIL varchar(255),
+    CREATED_AT datetime,
+    FOREIGN KEY (AUTHOR_EMAIL) REFERENCES MEMBER(EMAIL)
+)engine=INNODB character set=utf8;

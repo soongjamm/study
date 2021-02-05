@@ -1,5 +1,6 @@
 package config;
 
+import controllers.posts.ListUpController;
 import controllers.user.LoginController;
 import controllers.user.LogoutController;
 import controllers.user.RegisterController;
@@ -41,6 +42,11 @@ public class ControllerConfig {
     @Bean
     public LogoutController logoutController() {
         return new LogoutController();
+    }
+
+    @Bean
+    public ListUpController listUpController() {
+        return new ListUpController();
     }
 
 }

@@ -1,5 +1,6 @@
 package config;
 
+import domain.posts.PostsDao.PostsDao;
 import domain.user.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,5 +19,10 @@ public class DaoConfig {
         UserDao userDao = new UserDao();
         userDao.setJdbcTemplate(dataSource);
         return userDao;
+    }
+
+    @Bean
+    public PostsDao postsDao() {
+        return new PostsDao(dataSource);
     }
 }
