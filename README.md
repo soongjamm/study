@@ -1,5 +1,9 @@
 
 # 메모 바로가기
+
+## 스프링 부트 개념과 활용
+- [전체 readme](https://github.com/soongjamm/java-study/tree/whiteship-spring-boot-lecture/src/whiteship_spring_boot)
+
 ## 이것이 자바다 (신용권)
 - 메모가 없이 코드 예제만 작성한 부분도 있고 그 반대도 있다.
     - [상속](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/inheritance)
