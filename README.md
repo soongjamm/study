@@ -31,7 +31,9 @@
 - [7주차-패키지](https://soongjamm.tistory.com/118)
 - [8주차-인터페이스](https://soongjamm.tistory.com/119)
 - [9주차-예외처리](https://soongjamm.tistory.com/124)
-- [10주차-멀티쓰레](https://soongjamm.tistory.com/128)
+- [10주차-멀티쓰레드](https://soongjamm.tistory.com/128)
+- [11주차-Enum](https://github.com/soongjamm/java-study/tree/master/src/live_study/src/main/java/week11)
+- [12주차-어노테이션](https://github.com/soongjamm/java-study/tree/master/src/live_study/src/main/java/week12)
 
 ## 더 자바8
 - [함수형 인터페이스와 람다식](https://github.com/soongjamm/java-study/tree/master/src/java8/functional_interface_and_lambda)

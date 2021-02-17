@@ -162,10 +162,10 @@ printerMethod
 javadoc 은 API를 HTML 문서화 시켜준 것인데, 흔히 구글링 하다보면 볼 수 있다. (예 -  [ArrayList](https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html))
 
 `@Documented` 적용  
-![ex1](./src/live_study/screenshot/w12-1.png)
+![ex1](https://github.com/soongjamm/java-study/blob/master/src/live_study/screenshot/w12-1.png)
 
 `@Documented` 미적용  
-![ex2](./src/live_study/screenshot/w12-1.png)
+![ex2](https://github.com/soongjamm/java-study/blob/master/src/live_study/screenshot/w12-2.png)
 
 
 <br>
