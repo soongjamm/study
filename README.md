@@ -4,19 +4,23 @@
 ## 스프링 부트 개념과 활용
 - [전체 readme](https://github.com/soongjamm/java-study/tree/whiteship-spring-boot-lecture/src/whiteship_spring_boot)
 
+
 ## 이것이 자바다 (신용권)
 - 메모가 없이 코드 예제만 작성한 부분도 있고 그 반대도 있다.
-    - [상속](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/inheritance)
-    - [추상화](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/inheritance/abstraction)
-    - [인터페이스](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/Interface)
-    - [익명 객체](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/nestedClassAndInterface)
-    - [제네릭](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/generic)
-    - [기본 API 클래스](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/javaAPI)
-        - [정규 표현식 & Pattern 클래스](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/javaAPI/RegExp)
-    - [컬렉션 프레임워크](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/collection)
-    - [멀티 스레드](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/multiThread)
- 
+
+- [상속](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/inheritance)
+- [추상화](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/inheritance/abstraction)
+- [인터페이스](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/Interface)
+- [익명 객체](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/nestedClassAndInterface)
+- [제네릭](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/generic)
+- [기본 API 클래스](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/javaAPI)
+  - [정규 표현식 & Pattern 클래스](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/javaAPI/RegExp)
+- [컬렉션 프레임워크](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/collection)
+- [멀티 스레드](https://github.com/soongjamm/this-is-the-java/blob/master/src/this_is_the_java/multiThread)
+
+
 ## live-study (백기선님)
+
 - [1주차-JVM은 무엇이며 자바 코드는 어떻게 실행하는 것인가.](https://soongjamm.tistory.com/95)
 - [2주차-자바 데이터타입, 변수 그리고 배열](https://soongjamm.tistory.com/97)
 - [3주차-연산자](https://soongjamm.tistory.com/100)
@@ -36,6 +40,7 @@
 - [12주차-어노테이션](https://github.com/soongjamm/java-study/tree/master/src/live_study/src/main/java/week12)
 
 ## 더 자바8
+
 - [함수형 인터페이스와 람다식](https://github.com/soongjamm/java-study/tree/master/src/java8/functional_interface_and_lambda)
 - [디폴트/스태틱 메서드](https://github.com/soongjamm/java-study/tree/master/src/java8/interface_change)
 - [옵셔널(Optional)](https://github.com/soongjamm/java-study/tree/master/src/java8/optional)
@@ -43,6 +48,7 @@
 - [Date와 Time](https://github.com/soongjamm/java-study/tree/master/src/java8/date_time)
 
 ## 스프링5 프로그래밍 입문
+
 - [ch02 - 빈(Bean)이란?]()
 - [ch04 - 빈 자동주입. @Autowired 사용과 자동 주입 필수여부 (@Autowired의 required 옵션과 @nullable)](https://github.com/soongjamm/java-study/commit/79c80c192720ab31f3b4f9dac4cce13e312d7c0e)
 - [ch05 - 컴포넌트 스캔. @component, @componentscan과 속성, @component 로 인한 충돌 해결 등](https://github.com/soongjamm/java-study/commit/5734f525707db7df7227b13ddc1a9ef05ca4bf79)
@@ -64,6 +70,7 @@
 
 
 ## 스프링 입문을 위한 객체지향의 원리와 이해
+
 - [ch01 - 사람을 사랑한 기술](https://github.com/soongjamm/java-study/tree/master/src/oop/principlesAndUnderstanding/ch01) - 알아둬야 할 스프링 이전의 기술
 - [ch02 - 자바와 절차적/구조적 프로그래밍](https://github.com/soongjamm/java-study/tree/master/src/oop/principlesAndUnderstanding/ch02) - 자바 메모리 구조, 멀티 스레드/멀티 프로세스의 차이
 - ch03 - 자바와 객체 지향
