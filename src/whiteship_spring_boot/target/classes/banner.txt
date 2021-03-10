@@ -1,0 +1,6 @@
+========================================================
+ soongjamm spring-boot on !
+ spring-boot version - ${spring-boot.version}
+ application title - ${application.title}
+ application version - ${application.version}
+========================================================

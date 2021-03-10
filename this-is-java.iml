@@ -9,6 +9,7 @@
       <excludeFolder url="file://$MODULE_DIR$/src/test_driven_development_by_example" />
       <excludeFolder url="file://$MODULE_DIR$/src/whiteship_test_code" />
       <excludeFolder url="file://$MODULE_DIR$/src/enter_spring5" />
+      <excludeFolder url="file://$MODULE_DIR$/src/start-boot" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

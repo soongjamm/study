@@ -1,6 +1,9 @@
 
 # 메모 바로가기
 
+## JPA 기초강의 (T아카데미 김영한님 강의)
+- [커밋별로 정리](https://github.com/soongjamm/hello-jpa/commits/master)
+
 ## 스프링 부트 개념과 활용
 - [전체 readme](https://github.com/soongjamm/java-study/tree/whiteship-spring-boot-lecture/src/whiteship_spring_boot)
 
@@ -93,7 +96,12 @@
 ## 애플리케이션을 테스트하는 다양한 방법
 - [JUnit5 정리](https://github.com/soongjamm/java-study/tree/master/src/whiteship_test_code)
 - [Mockito](https://github.com/soongjamm/java-study/blob/master/src/whiteship_test_code/src/test/java/com/example/test_code/StudyServiceTest.java)
-       
+
+## 연습 코드
+- [오브젝트(조영호)](https://github.com/soongjamm/java-study/tree/master/src/start-boot/src/main/java/com/soongjamm/startboot/objects_practice)
+- [스프링 유효성검사/예외처리(@ControllerAdvice)](https://github.com/soongjamm/java-study/tree/master/src/start-boot/src/main/java/com/soongjamm/startboot/validator_json)
+- [jpa로 유저 생성하기](https://github.com/soongjamm/java-study/tree/master/src/start-boot/src/main/java/com/soongjamm/startboot/practice)       
+
 ## etc
 - [int와 Integer의 차이](https://soongjamm.tistory.com/120)
 - [enum](https://github.com/soongjamm/this-is-the-java/blob/master/src/etc/enums)
