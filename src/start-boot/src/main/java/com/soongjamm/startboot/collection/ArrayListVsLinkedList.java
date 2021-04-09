@@ -60,7 +60,7 @@ public class ArrayListVsLinkedList {
          *  LinkedList는 순차적으로 그 인덱스까지 탐색을 해야해서 오히려 오래걸리게 된다.
          *  ArrayList는 앞에 넣나 뒤에 넣나 차이가 없다.
          *
-         *  (LinkedList는 앞에 넣을때보다 1500배 이상 느려지고, ArrayList의 거의 10배 느림)
+         *  (LinkedList는 앞에 넣을때보다 1500배 이상 느려지고, ArrayList 보다 거의 10배 느림)
          */
         // 뒷쪽 인덱스
         start = System.currentTimeMillis();

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.NavigableSet;
 import java.util.TreeSet;
 
-public class TreeSetVsArrayList {
+public class TreesetVsArraylist {
 
     static final int THIRTY_MILLION = 30000000;
 
@@ -14,9 +14,9 @@ public class TreeSetVsArrayList {
         long start, end;
 
         /**
-         * 삽입
-         * treeset은 추가할 때 마다 데이터를 밀고 이동시켜야해서 오래걸림
-         * arraylist는 순차적으로 추가하므로 비교적 빠름
+         * 삽입 (arraylist 승)
+         * treeset은 추가할 때 마다 값을 비교해 데이터를 밀고 이동시켜야해서 오래걸림
+         * arraylist는 순차적으로 추가하므로 빠름
          */
         // treeset에 삽입
         start = System.currentTimeMillis();
@@ -35,7 +35,11 @@ public class TreeSetVsArrayList {
         end = System.currentTimeMillis();
         System.out.println("arraylist 삽입 " + (end - start));
 
-
+        /**
+         * 특정 값 찾기 (treeset 승)
+         * treeset은 값을 이미 비교해서 넣어놨으므로 탐색에 용이
+         * arraylist는 순차적으로 일일이 확인해야하므로 느림
+         */
         // TreeSet vs ArrayList 탐색 시간 비교.
         System.out.println("------------");
         start = System.currentTimeMillis();
@@ -48,6 +52,9 @@ public class TreeSetVsArrayList {
         end = System.currentTimeMillis();
         System.out.println("arraylist " + (end - start));
         System.out.println("------------");
+
+        //////////////////////////////////////////////////
+
 
         NavigableSet<Integer> under = treeSet.headSet(50, true).descendingSet();
         System.out.println(under.pollFirst()); // 50까지 중 마지막 숫자

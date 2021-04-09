@@ -1,12 +1,11 @@
 package com.soongjamm.startboot.objects_practice;
 
+import com.soongjamm.startboot.objects_practice.chapter2_completedVersion.*;
 import org.junit.jupiter.api.Test;
 
 import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalTime;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class MovieTest {
 
