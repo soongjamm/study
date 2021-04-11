@@ -5,9 +5,11 @@ import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.order.Order;
 import hello.core.order.OrderService;
+import hello.core.scan.filter.MyExcludeComponent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+@MyExcludeComponent
 @Component
 public class OrderServiceFieldInjection implements OrderService {
 
