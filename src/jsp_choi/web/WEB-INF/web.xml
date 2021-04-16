@@ -7,6 +7,32 @@
          version="3.1">
 
     <servlet>
+        <servlet-name>DBCPInit2</servlet-name>
+        <servlet-class>servlet.DBCPInit2</servlet-class>
+        <init-param>
+            <param-name>jdbcDriver</param-name>
+            <param-value>com.mysql.jdbc.Driver</param-value>
+        </init-param>
+        <init-param>
+            <param-name>jdbcUrl</param-name>
+            <param-value>jdbc:mysql://localhost:3306/chap14?CharacterEncoding=utf8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbUser</param-name>
+            <param-value>jspexam</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbPw</param-name>
+            <param-value>Jsppw#1234</param-value>
+        </init-param>
+        <init-param>
+            <param-name>poolName</param-name>
+            <param-value>chap14</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet>
         <servlet-name>mysqlDriverLoader</servlet-name>
         <servlet-class>jdbc.MySQLDriverLoader</servlet-class>
         <load-on-startup>1</load-on-startup>
@@ -18,6 +44,12 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <!-- servlet-mapping -->
+
+    <servlet-mapping>
+        <servlet-name>DBCPInit2</servlet-name>
+        <url-pattern>/dbcp2</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>mysqlDriverLoader</servlet-name>
         <url-pattern>/dl</url-pattern>
@@ -36,4 +68,5 @@
         <servlet-name>now</servlet-name>
         <url-pattern>/now</url-pattern>
     </servlet-mapping>
+
 </web-app>
