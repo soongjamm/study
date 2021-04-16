@@ -2,14 +2,22 @@ package jdbc;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.dbcp2.*;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
+import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DHCPInit extends HttpServlet {
+public class DBCPInit extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        init();
+    }
 
     @Override
     public void init() throws ServletException {
@@ -38,8 +46,8 @@ public class DHCPInit extends HttpServlet {
             GenericObjectPool<PoolableConnection> connectionPool = new GenericObjectPool<>(poolableConnectionFactory, poolConfig);
             poolableConnectionFactory.setPool(connectionPool);
 
-            Class.forName("org.apache.commons.dhcp2.PoolingDriver");
-            PoolingDriver driver = (PoolingDriver) DriverManager.getDriver("jdbc:apache:commons:dhcp");
+            Class.forName("org.apache.commons.dbcp2.PoolingDriver");
+            PoolingDriver driver = (PoolingDriver) DriverManager.getDriver("jdbc:apache:commons:dbcp:");
             driver.registerPool("chap14", connectionPool);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

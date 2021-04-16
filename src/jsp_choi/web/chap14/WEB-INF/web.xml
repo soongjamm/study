@@ -13,8 +13,8 @@
     </servlet>
 
     <servlet>
-        <servlet-name>DHCPInit</servlet-name>
-        <servlet-class>jdbc.DHCPInit</servlet-class>
+        <servlet-name>DBCPInit</servlet-name>
+        <servlet-class>jdbc.DBCPInit</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
@@ -23,7 +23,7 @@
         <url-pattern>/dl</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>DHCPInit</servlet-name>
-        <url-pattern>/dhcp</url-pattern>
+        <servlet-name>DBCPInit</servlet-name>
+        <url-pattern>/dbcp</url-pattern>
     </servlet-mapping>
 </web-app>
