@@ -1,5 +1,6 @@
 # 유의사항 
-Tomcat 설정 deployment에 설정할 때 WEB-INF 바로 하위 폴더를 설정해야함.
+~~Tomcat 설정 deployment에 설정할 때 WEB-INF 바로 하위 폴더를 설정해야함.~~
+최상단폴더로 설정하고 그 아래에 chap14, 17.. , WEB-INF 를 놓으면 됌.
 
 WEB-INF아래
 - 외부 라이브러리들은 lib에

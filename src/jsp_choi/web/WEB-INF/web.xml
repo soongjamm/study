@@ -26,4 +26,14 @@
         <servlet-name>DBCPInit</servlet-name>
         <url-pattern>/dbcp</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>now</servlet-name>
+        <servlet-class>servlet.NowServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>now</servlet-name>
+        <url-pattern>/now</url-pattern>
+    </servlet-mapping>
 </web-app>
