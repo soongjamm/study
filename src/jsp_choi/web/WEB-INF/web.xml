@@ -6,6 +6,16 @@
             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+    <context-param>
+        <param-name>poolConfig</param-name>
+        <param-value>
+            jdbcDriver=com.mysql.jdbc.Driver
+            jdbcUrl=jdbc:mysql://localhost:3306/guestbook?characterEncoding=utf8
+            dbUser=jspexam
+            dbPw=Jsppw#1234
+            poolName=guestbook
+        </param-value>
+    </context-param>
 
     <filter>
         <filter-name>LoginCheck</filter-name>
