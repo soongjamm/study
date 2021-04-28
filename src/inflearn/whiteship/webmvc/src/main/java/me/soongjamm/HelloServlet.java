@@ -20,9 +20,13 @@ public class HelloServlet extends HttpServlet {
         resp.getWriter().println("<html>");
         resp.getWriter().println("<head>");
         resp.getWriter().println("<body>");
-        resp.getWriter().println("<h1>Hello Servlet</h1>");
+        resp.getWriter().println("<h1>Hello " + getName(req) +"</h1>");
         resp.getWriter().println("</body>");
         resp.getWriter().println("</head>");
         resp.getWriter().println("</html>");
+    }
+
+    private Object getName(HttpServletRequest req) {
+        return req.getSession().getServletContext().getAttribute("name");
     }
 }
