@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>event form</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/join/form-name}" method="post" th:object="${member}">
+    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect name</p>
+    name <input type="text" th:field="*{name}">
+    <input type="submit" value="submit!">
+</form>
+
+</body>
+</html>
