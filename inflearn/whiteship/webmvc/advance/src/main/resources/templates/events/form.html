@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>event form</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/events/submit}" th:object="${event}" method="post">
+    <p th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Incorrect id</p>
+    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Incorrect title</p>
+    id <input type="text" th:field="*{id}">
+    title <input type="text" th:field="*{title}"><br>
+    <input type="submit" value="submit!">
+</form>
+
+</body>
+</html>
