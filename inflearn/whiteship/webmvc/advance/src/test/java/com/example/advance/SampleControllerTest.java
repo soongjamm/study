@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.hasItems;
@@ -129,5 +130,14 @@ class SampleControllerTest {
     void custom() throws Exception {
         mockMvc.perform(get("/customget"))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    void model() throws Exception {
+        MvcResult mvcResult = mockMvc.perform(get("/model")
+                .param("letsgo", "movemove"))
+                .andExpect(status().isOk())
+                .andReturn();
+        System.out.println(mvcResult);
     }
 }

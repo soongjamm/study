@@ -1,2 +1,4 @@
-package board;public class HelloController {
+package board;
+
+public class HelloController {
 }

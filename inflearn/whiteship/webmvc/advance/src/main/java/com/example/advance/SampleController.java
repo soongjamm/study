@@ -3,10 +3,8 @@ package com.example.advance;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class SampleController {
@@ -40,4 +38,20 @@ public class SampleController {
     public void custom() {
 
     }
+
+    @ModelAttribute("event")
+    public Event defaultEvent() {
+        return new Event(1, "new event!");
+    }
+
+    @GetMapping("/model")
+    public String showModel(Event event, Model model) {
+        // content()가 Model에 저장되나?
+        // Model 에 있는것을 파라미터에 @ModelAttribute로 가져온다?
+        Object fromModel = model.getAttribute("event");
+        System.out.println(fromModel != null);
+        System.out.println(event != null);
+        return "test1";
+    }
+
 }
