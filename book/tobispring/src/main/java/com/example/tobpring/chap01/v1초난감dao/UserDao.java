@@ -18,7 +18,7 @@ public class UserDao {
         rs.next();
         User user = new User();
         user.setId(rs.getString("id"));
-        user.setName(rs.getString("password"));
+        user.setPassword(rs.getString("password"));
 
         rs.close();
         stmt.close();
@@ -35,7 +35,7 @@ public class UserDao {
         );
         PreparedStatement stmt = c.prepareStatement("insert into users(id, password) values (?, ?)");
         stmt.setString(1, user.getId());
-        stmt.setString(2, user.getName());
+        stmt.setString(2, user.getPassword());
         stmt.executeUpdate();
 
         stmt.close();
