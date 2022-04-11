@@ -4,7 +4,11 @@ import java.util.Iterator;
 
 public class CapitalStrategyTermLoan extends CapitalStrategy {
     public double capital(Loan loan) {
-        return loan.getCommitment() * duration(loan) * riskFactorFor(loan);
+        return riskAmountFor(loan) * duration(loan) * riskFactorFor(loan);
+    }
+
+    protected double riskAmountFor(Loan loan) {
+        return loan.getCommitment();
     }
 
     public double duration(Loan loan) {

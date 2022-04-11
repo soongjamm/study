@@ -8,7 +8,9 @@ public abstract class CapitalStrategy {
     private static final int MILLIS_PER_DAY = 86400000;
     private static final int DAYS_PER_YEAR = 365;
 
-    public abstract double capital(Loan loan);
+    public double capital(Loan loan) {
+        return riskAmountFor(loan) * duration(loan) * riskFactorFor(loan);
+    }
 
     public abstract double duration(Loan loan);
 
@@ -20,4 +22,5 @@ public abstract class CapitalStrategy {
         Date beginDate = (loan.getToday() == null ? loan.getStart() : loan.getToday());
         return ((endDate.getTime() - beginDate.getTime()) / MILLIS_PER_DAY) / DAYS_PER_YEAR;
     }
-}
+
+    protected abstract double riskAmountFor(Loan loan);
