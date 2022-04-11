@@ -24,3 +24,4 @@ public abstract class CapitalStrategy {
     }
 
     protected abstract double riskAmountFor(Loan loan);
+}
