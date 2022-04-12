@@ -1,8 +1,8 @@
 package refactoring_to_patterns.replace_implicit_tree_with_composite;
 
 public class Product {
-    public char[] getId() {
-        return new char[0];
+    public String getId() {
+        return "new char[0]";
     }
 
     public double getPrice() {

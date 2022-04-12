@@ -19,54 +19,44 @@ public class OrdersWriter {
     // Visitor 패턴은 당장 만들기가 쉽지 않다. (시간이 걸린다)
     // 그래서 그 Visitor 패턴으로 리팩터링 전에, XML 생성 로직을 단순하게 만든다. -> Composite 패턴 적용.
     private void writeOrderTo(StringBuffer xml) {
-        xml.append("<orders>");
+        TagNode ordersTag = new TagNode("orders");
         for (int i = 0; i < orders.getOrderCount(); i++) {
             Order order = orders.getOrder(i);
-            xml.append("<order");
-            xml.append(" id='");
-            xml.append(order.getOrderId());
-            xml.append("'>");
-            writeProductsOrderTo(xml, order);
-            xml.append("</order>");
+            TagNode orderTag = new TagNode("order");
+            orderTag.addAttribute("id", order.getOrderId());
+            writeProductsTo(orderTag, order);
+            ordersTag.add(orderTag);
         }
-        xml.append("</orders>");
+        xml.append(ordersTag);
     }
 
-    private void writeProductsOrderTo(StringBuffer xml, Order order) {
+    private void writeProductsTo(TagNode orderTag, Order order) {
         for (int i = 0; i < order.getProductCount(); i++) {
             Product product = order.getProduct(i);
-            xml.append("<product");
-            xml.append(" id='");
-            xml.append(product.getId());
-            xml.append("'");
-            xml.append(" color='");
-            xml.append(colorFor(product));
-            xml.append("'");
+            TagNode productNode = new TagNode("product");
+            productNode.addAttribute("id", product.getId());
+            productNode.addAttribute("color", colorFor(product));
             if (product.getSize() != ProductSize.NOT_APPLICABLE) {
-                xml.append(" size='");
-                xml.append(sizeFor(product));
-                xml.append("'");
+                productNode.addAttribute("size", sizeFor(product));
             }
-            xml.append("/>");
-            writePriceTo(xml, product);
-            xml.append(product.getName());
-            xml.append("</product>");
+            writePriceTo(productNode, product);
+            orderTag.add(productNode);
         }
     }
 
-    private char[] sizeFor(Product product) {
-        return new char[0];
+    private void writePriceTo(TagNode productTag, Product product) {
+        TagNode priceTag = new TagNode("price");
+        priceTag.addAttribute("currency", currencyFor(product));
+        priceTag.addValue(priceFor(product));
+        productTag.add(priceTag);
     }
 
-    private char[] colorFor(Product product) {
-        return new char[0];
+    private String sizeFor(Product product) {
+        return "new char[0]";
     }
 
-    private void writePriceTo(StringBuffer xml, Product product) {
-        TagNode priceNode = new TagNode("price");
-        priceNode.addAttribute("currency", currencyFor(product));
-        priceNode.addValue(priceFor(product));
-        xml.append(priceNode);
+    private String colorFor(Product product) {
+        return "new char[0]";
     }
 
     private String priceFor(Product product) {
