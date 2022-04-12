@@ -63,15 +63,17 @@ public class OrdersWriter {
     }
 
     private void writePriceTo(StringBuffer xml, Product product) {
-        xml.append("<price>");
-        xml.append(" currency='");
-        xml.append(currencyFor(product));
-        xml.append("'>");
-        xml.append(product.getPrice());
-        xml.append("</price>");
+        TagNode priceNode = new TagNode("price");
+        priceNode.addAttribute("currency", currencyFor(product));
+        priceNode.addValue(priceFor(product));
+        xml.append(priceNode);
     }
 
-    private char[] currencyFor(Product product) {
-        return new char[0];
+    private String priceFor(Product product) {
+        return String.valueOf(product.getPrice());
+    }
+
+    private String currencyFor(Product product) {
+        return "USD";
     }
 }

@@ -5,8 +5,8 @@ public class Product {
         return new char[0];
     }
 
-    public char[] getPrice() {
-        return new char[0];
+    public double getPrice() {
+        return 8.95;
     }
 
     public int getSize() {
