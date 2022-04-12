@@ -16,4 +16,16 @@ public class TagTests  {
 
         assertEquals("price XML", expected, priceTag.toString());
     }
+
+    @Test
+    void testCompositeTagOneChild() {
+        TagNode productTag = new TagNode("product");
+        productTag.add(new TagNode("price"));
+        String expected =
+                "<product>" +
+                    "<price>" +
+                    "</price>" +
+                "</product>";
+        assertEquals("product XML", expected, productTag.toString());
+    }
 }
