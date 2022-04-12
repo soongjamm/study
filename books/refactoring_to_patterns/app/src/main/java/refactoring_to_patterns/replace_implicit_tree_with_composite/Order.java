@@ -1,8 +1,8 @@
 package refactoring_to_patterns.replace_implicit_tree_with_composite;
 
 public class Order {
-    public char[] getOrderId() {
-        return new char[0];
+    public String getOrderId() {
+        return "new char[0]";
     }
 
     public int getProductCount() {
