@@ -28,4 +28,22 @@ public class TagTests  {
                 "</product>";
         assertEquals("product XML", expected, productTag.toString());
     }
+
+    @Test
+    void testAddingChildrenAndGrandchildren() {
+        String expected =
+                "<orders>" +
+                    "<order>" +
+                        "<product>" +
+                        "</product>" +
+                    "</order>" +
+                "</orders>";
+
+        TagNode ordersTag = new TagNode("orders");
+        TagNode orderTag = new TagNode("order");
+        TagNode productTag = new TagNode("product");
+        ordersTag.add(orderTag);
+        orderTag.add(productTag);
+        assertEquals("price XML", expected, ordersTag.toString());
+    }
 }
