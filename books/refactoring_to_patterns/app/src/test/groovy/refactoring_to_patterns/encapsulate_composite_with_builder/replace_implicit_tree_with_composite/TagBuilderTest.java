@@ -106,4 +106,31 @@ public class TagBuilderTest {
             assertEquals(exceptionErrorMessage, e.getMessage());
         }
     }
+
+    @Test
+    void testAttributesAndValues() {
+        String expected =
+                "<flavor name='Test-Driven Development'>" + // 속성을 가진 태그
+                    "<requirements>" +
+                        "<requirement type='hardware'>" +
+                            "1 computer for every 2 participants" + // 값을 가진 태그
+                        "</requirement>" +
+                        "<requirement type='software'>" +
+                            "IDE" +
+                        "</requirement>" +
+                    "</requirements>" +
+                "</flavor>";
+
+        TagBuilder builder = new TagBuilder("flavor");
+        builder.addAttribute("name", "Test-Driven Development");
+        builder.addChild("requirements");
+            builder.addToParent("requirements", "requirement");
+            builder.addAttribute("type", "hardware");
+            builder.addValue("1 computer for every 2 participants");
+            builder.addToParent("requirements", "requirement");
+            builder.addAttribute("type", "software");
+            builder.addValue("IDE");
+
+        assertEquals(expected, builder.toXml());
+    }
 }

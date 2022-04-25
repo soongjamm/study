@@ -30,9 +30,6 @@ public class TagNode {
 
     public String toString() {
         Iterator it = children().iterator();
-        if (!it.hasNext()) {
-            return "<" + name + attributes + "/>";
-        }
         String result;
         result =
                 "<" + name + attributes + ">";
