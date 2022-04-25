@@ -65,4 +65,45 @@ public class TagBuilderTest {
         assertEquals(expected, actualXml);
     }
 
+    @Test
+    void testRepeatingChildrenAndGrandchildren() {
+        String expected =
+                "<flavors>" +
+                    "<flavor>" +
+                        "<requirements>" +
+                            "<requirement/>" +
+                        "</requirements>" +
+                    "</flavor>" +
+                    "<flavor>" +
+                        "<requirements>" +
+                            "<requirement/>" +
+                        "</requirements>" +
+                    "</flavor>" +
+                "</flavors>";
+
+        TagBuilder builder = new TagBuilder("flavors");
+        for (int i = 0; i < 2; i++) {
+            builder.addToParent("flavors", "flavor");
+            builder.addChild("requirements");
+            builder.addChild("requirement");
+        }
+
+        assertEquals(expected, builder.toXml());
+    }
+
+    @Test
+    void testParentNameNotFound() {
+        TagBuilder builder = new TagBuilder("flavors");
+        try {
+            for (int i = 0; i < 2; i++) {
+                builder.addToParent("favors", "flavor"); // flavors 를 flavor 로 잘못 입력
+                builder.addChild("requirements");
+                builder.addChild("requirement");
+            }
+            fail("should not allow adding to parent that does not exist");
+        } catch (RuntimeException e) {
+            String exceptionErrorMessage = "missing parent tag: favors";
+            assertEquals(exceptionErrorMessage, e.getMessage());
+        }
+    }
 }
