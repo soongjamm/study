@@ -48,4 +48,21 @@ public class TagBuilderTest {
 
         assertEquals(expected, actualXml);
     }
+
+    @Test
+    void testBuildSibling() {
+        String expected =
+                "<flavors>" +
+                    "<flavor1/>" +
+                    "<flavor2/>" +
+                "</flavors>";
+
+        TagBuilder builder = new TagBuilder("flavors");
+        builder.addChild("flavor1");
+        builder.addSibling("flavor2");
+        String actualXml = builder.toXml();
+
+        assertEquals(expected, actualXml);
+    }
+
 }

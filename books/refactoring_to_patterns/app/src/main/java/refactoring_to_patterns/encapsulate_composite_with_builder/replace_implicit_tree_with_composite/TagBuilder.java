@@ -18,4 +18,13 @@ public class TagBuilder {
         currentNode = new TagNode(childTagNode);
         parentNode.add(currentNode);
     }
+
+    public void addSibling(String siblingTagNode) {
+        addTo(currentNode.getParent(), siblingTagNode);
+    }
+
+    private void addTo(TagNode parentNode, String tagName) {
+        currentNode = new TagNode(tagName);
+        parentNode.add(currentNode);
+    }
 }
