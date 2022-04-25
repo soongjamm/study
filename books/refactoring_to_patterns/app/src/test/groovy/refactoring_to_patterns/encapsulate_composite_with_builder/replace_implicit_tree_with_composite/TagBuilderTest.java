@@ -133,4 +133,17 @@ public class TagBuilderTest {
 
         assertEquals(expected, builder.toXml());
     }
+
+    @Test
+    void testToStringBufferSize() {
+        TagBuilder builder = new TagBuilder("requirements");
+        builder.addChild("requirement");
+        builder.addAttribute("type", "software");
+        builder.addValue("IDE");
+
+        int stringSize = builder.toXml().length();
+        System.out.println(builder.toXml());
+        int computedSize = builder.bufferSize();
+        assertEquals(stringSize, computedSize);
+    }
 }

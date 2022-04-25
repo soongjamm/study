@@ -30,6 +30,9 @@ public class TagNode {
 
     public String toString() {
         Iterator it = children().iterator();
+        if (!it.hasNext() && value.length() == 0) {
+            return "<" + name + attributes + "/>";
+        }
         String result;
         result =
                 "<" + name + attributes + ">";
@@ -64,5 +67,9 @@ public class TagNode {
 
     private void setParent(TagNode parent) {
         this.parent = parent;
+    }
+
+    public void appendContentsTo(StringBuffer xmlResult) {
+        xmlResult.append(this);
     }
 }
