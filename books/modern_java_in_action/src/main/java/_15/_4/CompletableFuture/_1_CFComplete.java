@@ -7,7 +7,7 @@ import java.util.concurrent.Executors;
 
 import static _15._2.동기API_비동기API._2_ExecutorServiceExample.*;
 
-public class CFComplete {
+public class _1_CFComplete {
     // f(x), f(y) 를 동시에 실행해 합계를 구하는 코드
     // CompletableFuture 는 실행할 코드 없이 Future를 만들도록 허용하고 complete() 메서드로 나중에 어떤 값을 이용해 스레드가 이를 완료하여 get 으로 값을 얻을 수 있다.
     public static void main(String[] args) throws ExecutionException, InterruptedException {
