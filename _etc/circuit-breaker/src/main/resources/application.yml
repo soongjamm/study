@@ -1,0 +1,12 @@
+resilience4j:
+  circuitbreaker:
+    instances:
+      order:
+        failureRateThreshold: 50
+        slowCallRateThreshold: 50
+        slowCallDurationThreshold: 500ms
+        permittedNumberOfCallsInHalfOpenState: 4
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 4
+        waitDurationInOpenState: 30s
