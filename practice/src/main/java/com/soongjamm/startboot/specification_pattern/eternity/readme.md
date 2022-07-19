@@ -1,0 +1,40 @@
+http://aeternum.egloos.com/2955485
+
+# Specification 패턴
+- 객체지향 프로그래밍의 기본 특성은 상태와 행동을 함께 모아두는 것
+- 그러나 모든 상황에 적합한 것은 아니다. 대표적으로 Active Record 패턴을 사용하면 영속성 로직과 도메인 로직이 하나의 객체에 모아져서 응집성을 떨어트리고 데이터베이스와의 결합도를 높이는 부정적인 결과를 낳는다.
+- 이처럼 객체를 검증할 때, 엔티티의 정합성을 검증하는 조건 체크 로직이 엔티티의 응집성을 낮추고 결합도를 높이는 경우, 정합성 검증을 위한 로직을 별도의 클래스로 분리할 수 있다. 이러한 특정 엔티티를 검사하는 로직을 엔티티 내부에 두지 않고, 독립적인 객체로 분리하는 것을 Specification 패턴이라고 한다.
+
+### 구조
+Specification <- AbstractSpecification <- And/Or/구현 Specification
+
+## 현재 테스트 케이스의 문제점
+
+```java
+Planet planet = new Planet(
+        new Atmosphere(Money.wons(5000),
+                element("N", Ratio.of(0.8)),
+                element("O", Ratio.of(0.2))),
+        Arrays.asList(
+                new Continent("아시아"),
+                new Continent("유럽")),
+        Arrays.asList(
+                new Ocean("태평양", Money.wons(1000)),
+                new Ocean("대서양", Money.wons(1000))));
+```
+
+### 1. 애매한 테스트(Obsecure Test)
+- 테스트와 관련없는 정보들이 많아서(Atmosphere, Ocean) 테스트 중인 시스템의 동작(SUT)에 실제로 영향을 미치는 것이 어떤 것인지 파악하기 어렵다.  
+- 테스트와 관련성은 없지만, 컴파일러가 요구하는 필수 파라미터이기 때문에 생성자에 전달해야만 한다.  
+- 그 결과 테스트의 목적을 흐리고, 테스트 케이스를 이해하는데 인지적 과부하를 초래한다.  
+
+### 2. 깨지기 쉬운 테스트 (Fragile Test)
+- Planet 픽스처를 여러 테스트에서 공유하는데(**테스트 중복**), 파라미터로 사용되는 객체들을 모두 직접 생성하고 있다. 
+- 만약 시그니처에 변경이 생긴다면 모든 테스트를 수정해야한다.
+- 이처럼 API 가 변경됬을 때 테스트 케이스에 컴파일 에러가 발생하는 것을 인터페이스의 민감함(Interface Sensivity) 라고 한다.
+- 이는 테스트 케이스의 유지보수를 어렵게 만든다.
+
+
+
+  
+  
