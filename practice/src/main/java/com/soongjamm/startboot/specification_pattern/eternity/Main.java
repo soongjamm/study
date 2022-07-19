@@ -22,8 +22,8 @@ public class Main {
                 element("N", Ratio.of(0.8)),
                 element("O", Ratio.of(0.2))
         ),
-                List.of(new Continent("아시아"), new Continent("유럽")),
-                List.of(new Ocean("아시아"), new Ocean("유럽")));
+                List.of(new Continent("아시아", Money.wons(1000)), new Continent("유럽", Money.wons(1000))),
+                List.of(new Ocean("아시아", Money.wons(4000)), new Ocean("유럽", Money.wons(4000))));
 
         Specification specification = new ContinentSpecification(8).and(new PriceSpecification(Money.wons(100)));
         boolean satisfied = specification.isSatisfied(planet);
